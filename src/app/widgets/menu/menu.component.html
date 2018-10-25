@@ -1,0 +1,52 @@
+<div id="Menu">
+  <p class="Menu-default"><i class="icon iconfont">&#xe663;</i><a routerLink="/admin/index">会员中心</a></p>
+  <div>
+    <p><i class="icon iconfont">&#xe64c;</i>财务中心</p>
+    <ul>
+      <li routerLinkActive="active"><a routerLink="/admin/finance/details">收益明细</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/finance/continual">收支流水</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/finance/trans">收益转换</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/finance/rechargebal">天天奖励充值</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/finance/recharge">报单金额充值</a></li>
+      <li routerLinkActive="active" *ngIf="IsWithdraw"><a routerLink="/admin/finance/extract">提现</a></li>
+      <li routerLinkActive="active" *ngIf="IsTransfer"><a routerLink="/admin/finance/give">积分互转</a></li>
+    </ul>
+  </div>
+  <div>
+    <p><i class="icon iconfont">&#xe642;</i>我的推广</p>
+    <ul>
+      <li routerLinkActive="active"><a routerLink="/admin/spread/register">注册会员</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/spread/futou">复投</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/spread/member">关系导图</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/spread/zhongxin">报单中心</a></li>
+      <li routerLinkActive="active" *ngIf="isbaodan"><a routerLink="/admin/spread/list">会员列表</a></li>
+    </ul>
+  </div>
+  <div>
+    <p><i class="icon iconfont">&#xe642;</i>我的股权</p>
+    <ul>
+      <li routerLinkActive="active"><a routerLink="/admin/guquan/profit">股权收益转换</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/guquan/duihuan">兑换股权积分</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/guquan/buy">购买股权</a></li>
+      <li routerLinkActive="active" *ngIf="isbaodan"><a routerLink="/admin/guquan/give">股权回购分配</a></li>
+    </ul>
+  </div>
+  <div>
+    <p><i class="icon iconfont">&#xe60e;</i>商城购物</p>
+    <ul>
+      <li routerLinkActive="active"><a routerLink="/admin/order/whole">我的订单</a></li>
+      <!--<li routerLinkActive="active"><a routerLink="/admin/order/deliver">待发货</a></li>-->
+      <!--<li routerLinkActive="active"><a routerLink="/admin/order/receipt">待收货</a></li>-->
+      <!--<li routerLinkActive="active"><a routerLink="/admin/order/return">售后/退货</a></li>-->
+    </ul>
+  </div>
+  <div>
+    <p><i class="icon iconfont">&#xe6c8;</i>设置</p>
+    <ul>
+      <li routerLinkActive="active"><a routerLink="/admin/user/info">个人信息</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/user/address">收货地址管理</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/user/password">修改登陆密码</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin/user/secondary">修改二级密码</a></li>
+    </ul>
+  </div>
+</div>

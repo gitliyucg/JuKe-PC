@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>激活会员</div>
+
+    <form class="form-cont form-horizontal" [formGroup]="formModel">
+      <div class="form-group">
+        <label class="control-label col-sm-2">报单金额余额</label>
+        <div class="col-sm-1">
+          <p class="control-label">{{wallet['RegBalance']}}</p>
+        </div>
+        <label class="control-label col-sm-2">天天奖励余额</label>
+        <div class="col-sm-1">
+          <p class="control-label">{{wallet['tiantian']}}</p>
+        </div>
+        <label class="control-label col-sm-2">动态奖励余额</label>
+        <div class="col-sm-1">
+          <p class="control-label">{{wallet['dongtai']}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2">激活会员</label>
+        <p class="control-label col-sm-2">
+          {{ID}}
+        </p>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('money').touched && formModel.get('money').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>报单金额</label>
+        <div class="col-sm-2">
+          <input type="number" class="form-control" formControlName="money" (input)="oncha($event.target.value)">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('money').touched && formModel.get('money').hasError('max')">报单金额余额不足</label>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('tian').touched && formModel.get('tian').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>天天奖励</label>
+        <div class="col-sm-2">
+          <input type="number" class="form-control" formControlName="tian" (input)="oncha($event.target.value)">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('tian').touched && formModel.get('tian').hasError('max')">天天奖励余额不足</label>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('dong').touched && formModel.get('dong').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>动态奖励</label>
+        <div class="col-sm-2">
+          <input type="number" class="form-control" formControlName="dong" (input)="oncha($event.target.value)">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('dong').touched && formModel.get('dong').hasError('max')">动态奖励余额不足</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2">所需报单总额</label>
+        <div class="col-sm-2">
+          <p class="control-label">{{zonge}}</p>
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="chae != 0 && chae != zonge">还需{{chae}} 积分</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-4"><button class="btn btn-confirm" (click)="onSubmit($event)" [disabled]="chaeOn">确认</button></div>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

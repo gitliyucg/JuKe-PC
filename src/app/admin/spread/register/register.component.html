@@ -1,0 +1,109 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>注册会员</div>
+
+    <form class="form-cont form-horizontal" [formGroup]="formModel">
+      <div class="form-group" [class.has-error]="formModel.get('UserID').touched && formModel.get('UserID').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>会员账号</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="UserID" placeholder="以字母开头的4-10位英文+数字">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('UserID').touched && formModel.get('UserID').hasError('pattern')">以字母开头的4-10位英文+数字</label>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('Name').touched && formModel.get('Name').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>会员姓名</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="Name">
+        </div>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('BaoDanSum').touched && formModel.get('BaoDanSum').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>报单数</label>
+        <div class="col-sm-4">
+          <input type="number" min="1" class="form-control" formControlName="BaoDanSum">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('BaoDanSum').touched && formModel.get('BaoDanSum').hasError('min')">报单数需大于0</label>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('IDNumber').touched && formModel.get('IDNumber').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>身份证号码</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="IDNumber">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('IDNumber').touched && formModel.get('IDNumber').hasError('pattern')">身份证号码格式错误</label>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('Mobile').touched && formModel.get('Mobile').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>手机号码</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="Mobile">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('Mobile').touched && formModel.get('Mobile').hasError('pattern')">手机号码格式错误</label>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('OpeningBank').touched && formModel.get('OpeningBank').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>银行类别</label>
+        <div class="col-sm-4">
+          <select class="form-control" formControlName="OpeningBank" [(ngModel)]="selBank">
+            <option value="{{x.BankName}}" *ngFor="let x of bankModel;">{{x.BankName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('BankAccount').touched && formModel.get('BankAccount').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>银行账号</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="BankAccount">
+        </div>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('BankZhihang').touched && formModel.get('BankZhihang').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>银行支行</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="BankZhihang">
+        </div>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('Password').touched && formModel.get('Password').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>一级密码</label>
+        <div class="col-sm-4">
+          <input type="password" class="form-control" formControlName="Password" placeholder="6-16位英文+数字">
+        </div>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('SecondaryPassword').touched && formModel.get('SecondaryPassword').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>二级密码</label>
+        <div class="col-sm-4">
+          <input type="password" class="form-control" formControlName="SecondaryPassword" placeholder="6位数字">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">推荐人账号</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" [formControl]="tjName">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">推荐人姓名</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" disabled="disabled" value="{{uname}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">报单中心</label>
+        <div class="col-sm-4">
+          <span class="form-vm">{{formModel.get('BanDanCenter').value}}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-6">
+          <span class="form-vm">点击「注册」按钮，即代表你同意<a style="color: blue" routerLink="/legal">《剧客网注册协议》</a></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-4"><button class="btn btn-confirm" (click)="onSubmit($event)" [disabled]="formModel.invalid">注册</button></div>
+      </div>
+
+    </form>
+
+
+  </div>
+
+</div>

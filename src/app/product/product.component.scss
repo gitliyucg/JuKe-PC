@@ -1,0 +1,30 @@
+#product{ clear: both;
+  overflow: hidden; margin-bottom: 20px;}
+.main{float: left; width: 600px;}
+.side{float: right; width: 580px;}
+
+#product .btn.btn-cart{ padding: 10px 20px; margin-left: 20px; }
+
+.brief{ margin-top: 10px; color: #999999;}
+
+.side div{ clear: both; font-size: 0.16rem; clear: both;}
+.side div span{ float: left; display: block; width: 50px;}
+.guigemain,.price,.size{ padding:10px; }
+
+.side div.price{ line-height: 30px;}
+.side div.price strong{ color: #ff4a02; font-size: 0.2rem;}
+
+
+.guigemain{margin-bottom: 5px;}
+.guigemain ul{ clear: both;overflow: hidden; margin: 15px 0 0px 0;}
+.guigemain ul.guige li{ padding: 10px 15px; margin-bottom: 10px; float: left; border: 1px solid #CCCCCC; margin-right: 10px; cursor: pointer;}
+.guigemain ul.guige li.active{ color: #ff4a02; border-color: #ff4a02;}
+.guigemain.error{ border: 1px solid #ff4a02;}
+
+.size{ line-height: 30px;
+  .jian{ height: 28px; width: 28px; font-size: 0.16rem;background-color:#ededed; border-radius: 0; border: 1px solid #CCCCCC; vertical-align: middle;}
+  .jia{ height: 28px; width: 28px; font-size: 0.16rem; font-weight: bold;background-color:#ededed; border: 1px solid #CCCCCC; vertical-align: middle;}
+  .jian[disabled],.jia[disabled]{cursor: not-allowed; box-shadow: none; opacity: .65;}
+  .num{ width: 50px; height: 28px;border:1px solid #CCCCCC; border-left: none; border-right: none; vertical-align: middle; text-align: center;}
+}
+#ProCont{ width: 750px; margin: 0 auto;}

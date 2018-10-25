@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div class="titlei"><i></i>修改二级密码</div>
+
+  <div id="payment">
+      <form class="form-cont form-horizontal" [formGroup]="formMobel">
+          <div class="form-group" [class.has-error]="formMobel.get('newPass').touched && formMobel.get('newPass').invalid">
+              <label class="control-label col-sm-2">新密码</label>
+              <div class="col-sm-3">
+                  <input type="password" class="form-control" value="{{newPass}}" formControlName="newPass" autocomplete="off" >
+              </div>
+              <label class="control-label" style="color: #a94442" *ngIf="formMobel.get('newPass').touched && formMobel.get('newPass').invalid">新密码由6位数字组成</label>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-sm-2">确认新密码</label>
+              <div class="col-sm-3">
+                  <input type="password" class="form-control" value="{{passOK}}" formControlName="passOK" autocomplete="off" >
+              </div>
+              <label style="color: #a94442" class="control-label" *ngIf="formMobel.get('passOK').value != '' && formMobel.get('newPass').value !== formMobel.get('passOK').value">两次密码不一致</label>
+          </div>
+          <button class="btn" (click)="Savemodify()" [disabled]=" show || formMobel.get('newPass').value == '' || formMobel.get('passOK').value == '' || formMobel.invalid || formMobel.get('newPass').value !== formMobel.get('passOK').value" >下一步</button>
+      </form>
+  </div>
+
+</div>

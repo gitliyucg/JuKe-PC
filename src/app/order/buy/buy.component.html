@@ -1,0 +1,138 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <div class="title-banner mt15">收货地址</div>
+  <div id="Address">
+    <ul>
+      <li *ngFor="let a of addrModel;let i = index;" [class.active]="a['State'] == 1" [attr.data-index]="i">
+        <div class="city">{{a['Province']}}<b>{{a['City']}}</b>　({{a['Name']}} 收)</div>
+        <div class="area"><span class="info">{{a['Areas']}}　{{a['Address1']}}</span><span class="phone">{{a['Phone']}}</span></div>
+        <div class="area-active"><span class="info" title="{{a['Address1']}}">{{GetAddress(a['Areas'],a['Address1'])}}</span><span class="phone">{{a['Phone']}}</span></div>
+        <div class="edit"><button class="btn-link" (click)="edit(a['ID'],i)">修改</button></div>
+        <i class="icon iconfont">&#xe6f4;</i>
+        <span class="moren" *ngIf="a['State'] == 1">默认地址</span>
+      </li>
+    </ul>
+    <div class="lookall">
+      <button class="btn btn-link" (click)="lookall()" *ngIf="addrModel.length > 4">显示全部地址</button>
+      <button class="btn btn-link" (click)="show()" *ngIf="addrModel.length <= 4 || createOn">添加新地址</button>
+      <a routerLink="/admin/user/address" class="btn btn-link">管理收货地址</a>
+    </div>
+  </div>
+
+  <br>
+  <div class="title-banner mt15">订单详情</div>
+  <div class="cart-list">
+    <div class="thead row">
+      <div class="col-xs-6 text-left">商品名称</div>
+      <div class="col-xs-2">单价</div>
+      <div class="col-xs-2">数量</div>
+      <div class="col-xs-2">小计</div>
+    </div>
+
+    <div class="tbody row">
+      <div class="col-xs-6 text-left">
+        <div class="info">
+          <p class="info-img"><img src="{{model['Images']}}" height="82" alt=""></p>
+          <div>
+            <p>{{model['Title']}}</p>
+            <span>{{model['ParamName']}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-2">{{model['Price']}}</div>
+      <div class="col-xs-2"><button class="jian" [disabled]="num < 2" (click)="jian()">━</button><input class="num" type="text" [(ngModel)]="num" (input)="onsize($event.target.value)"><button class="jia" (click)="jia()" [disabled]="num >= kucun">+</button></div>
+      <div class="col-xs-2">{{model['Price'] * num}}</div>
+    </div>
+
+    <div class="tfoot row">
+      <div class="col-xs-6 text-left">
+        <span>给卖家留言：</span><textarea id="Message" [(ngModel)]="message" class="form-control"></textarea>
+      </div>
+      <div class="col-xs-6 text-right">
+        <p>商品总计：　￥{{zongjia}}</p>
+        <p>天天奖励共有{{wallet['tiantian']}}积分，可用来购买商品 <input class="check" type="checkbox" value="{{'1,'+wallet['tiantian']}}" (change)="checlick($event)"></p>
+        <p>动态奖励共有{{wallet['dongtai']}}积分，可用来购买商品 <input class="check" type="checkbox" value="{{'2,'+wallet['dongtai']}}" (change)="checlick($event)"></p>
+        <p>应付积分：<strong class="price">￥{{zongjia}}</strong><button class="btn btn-buy" (click)="buy()">提交订单</button></p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+</div>
+
+<div class="zhao">
+  <div class="zhaomain">
+    <div class="head"><span>创建地址</span> <i class="iconfont icon" (click)="close()">&#xe61b;</i></div>
+    <form class="form-cont form-horizontal" [formGroup]="formModel">
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>所在地区</label>
+        <div class="col-sm-3" [class.has-error]="formModel.get('Province').touched && formModel.get('Province').invalid">
+          <select class="form-control" (change)="selpro()" formControlName="Province" [ngModel]="province">
+            <option *ngFor="let item of proviceData" value="{{item.id}}|{{item.name}}">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="col-sm-3" [class.has-error]="formModel.get('City').touched && formModel.get('City').invalid">
+          <select class="form-control" (change)="selcity()" formControlName="City" [(ngModel)]="City">
+            <option *ngFor="let item of cityData" value="{{item.id}}|{{item.name}}">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="col-sm-3" [class.has-error]="formModel.get('Areas').touched && formModel.get('Areas').invalid">
+          <select class="form-control" formControlName="Areas" [(ngModel)]="Areas">
+            <option *ngFor="let item of areasData" value="{{item.id}}|{{item.name}}">{{item.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('Address1').touched && formModel.get('Address1').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>详细地址</label>
+        <div class="col-sm-9">
+          <textarea class="form-control" formControlName="Address1" placeholder="详细地址，街道，门牌号等" style="resize:none;height: 0.8rem" value=""></textarea>
+        </div>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('Name').touched && formModel.get('Name').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>收货人</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="Name">
+        </div>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('Phone').touched && formModel.get('Phone').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>联系电话</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="Phone">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('Phone').touched && formModel.get('Phone').hasError('pattern')">手机号码格式错误</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <p class="col-sm-4 control-label"><input type="checkbox" formControlName="State">设为默认</p>
+        <div class="col-sm-4"><button class="btn btn-confirm" (click)="onSubmit($event)" *ngIf="!editOn" [disabled]="formModel.invalid">确认</button></div>
+        <div class="col-sm-4"><button class="btn btn-confirm" (click)="onEdit($event)" *ngIf="editOn" [disabled]="formModel.invalid">修改</button></div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div class="pass">
+  <div class="passmain">
+    <div class="head">支付密码</div>
+    <div class="input">
+      <div class="ul">
+        <input type="password" maxlength="1" class="form-control" (input)="set($event.target.value,0)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="off" (input)="set($event.target.value,1)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="off" (input)="set($event.target.value,2)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="off" (input)="set($event.target.value,3)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="off" (input)="set($event.target.value,4)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="off" (input)="set($event.target.value,5)">
+      </div>
+
+    </div>
+    <div class="foot">
+      <div>
+        <button class="btn btn-default" (click)="passClose()">取消</button>
+        <button class="btn btn-confirm" (click)="validPass($event)">确认</button>
+      </div>
+    </div>
+  </div>
+</div>

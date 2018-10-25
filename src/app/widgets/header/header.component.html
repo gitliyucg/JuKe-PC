@@ -1,0 +1,13 @@
+<header>
+  <div id="Header">
+    <div id="Logo"><a href="/"><img src="/assets/images/Logo.png" alt="剧客网"></a></div>
+    <ul id="Navigat">
+      <li routerLinkActive="active"><a routerLink="/index">首页</a></li>
+      <li routerLinkActive="active"><a routerLink="/news">资讯</a></li>
+      <li routerLinkActive="active" *ngIf="loginState === false"><a routerLink="/login">登陆</a></li>
+      <li routerLinkActive="active" *ngIf="loginState === true"><a routerLink="/admin/index">会员中心</a></li>
+      <li routerLinkActive="active" *ngIf="loginState === true"><a class="a-hand" (click)="signout()">退出</a></li>
+      <li routerLinkActive="active"><a [routerLink]='["/download"]'>下载APP</a></li>
+    </ul>
+  </div>
+</header>

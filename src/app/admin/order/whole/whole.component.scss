@@ -1,0 +1,27 @@
+.Tabel{
+    margin-top: 20px;
+    display: inline-block;
+}
+.Tabel :after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.Tabel li {
+    float: left;
+    margin-left: 0.2rem;
+    padding-bottom: 20px;
+}
+.Tabel li:nth-of-type(odd){
+    font-size: 0.17rem;
+}
+.Tabel li:nth-of-type(even){
+    color: #e4e4e4;
+}
+.action{
+    color: #ff4a02;
+}
+.action a{
+    color: #ff4a02;
+    text-decoration: none;
+}

@@ -1,0 +1,108 @@
+.titlei{
+    display: inline-block;
+    margin-left: 0.2rem;
+}
+.Addaddress{
+    float: right;
+    margin-right: 0.3rem;
+    cursor:pointer;
+}
+.Addaddress:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.Administration{
+    display: inline-block;
+    width: 9.94rem;
+    height: 6.56rem;
+    margin-left: 0.2rem;
+}
+.AdministrationList{
+    border-bottom: 1px solid #b8b8b9;
+    padding-bottom: 0.18rem;
+}
+.AdministrationList:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.AdministrationList p{
+    margin-left: 0.14rem;
+    margin-top: 0.18rem;
+}
+.address{
+    margin-top: 0.2rem;
+}
+.Defaultaddress{
+    display: inline-block;
+    color: white;
+    width: 0.8rem;
+    height: 0.22rem;
+    background: #ff4a02;
+    text-align: center;
+    line-height: 0.22rem;
+    border-radius: 3px;
+    margin-left: 0.4rem;
+}
+.Consignee{
+    display: inline-block;
+    margin-left: 0.29rem;
+    margin-top: 0.18rem;
+}
+.operation{
+    display: inline-block;
+    float: right;
+}
+.operation span{
+    margin-left: 0.25rem;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    not supported by any browser */
+    cursor:pointer;
+}
+.mask{
+    top: 0;left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 900000;
+}
+.Add{
+    width: 9.18rem;
+    height: 5.18rem;
+    background: white;
+    position: absolute;
+    top: 0;left: 0;right: 0;bottom: 0;
+    margin: auto;
+}
+.Add：after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.Add>i{
+    float: right;
+    margin-top: 0.42rem;
+    margin-right: 0.53rem;
+    cursor:pointer;
+}
+.Adddetails{
+    margin-top: 1rem;
+    margin-left: 0.3rem;
+}
+.Adddetails i{
+    width: 0.04rem;
+    height: 0.16rem;
+    border-left: 2px solid #ff4a02;
+    border-right: 2px solid #ff4a02;
+    border-radius: 5px;
+}
+.has-error{
+    color: #a94442;
+}

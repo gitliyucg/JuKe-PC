@@ -1,0 +1,96 @@
+
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+  <div id="AdminMain">
+  <div class="titlei"><i></i>商城购物>>
+    <span style="cursor:pointer" [routerLink]="['/admin/order/whole']">我的订单</span>>>
+    <span>订单：{{ID}}</span>
+  </div>
+  <div class="OrderWarp">
+    <div class="OrderNumber">
+      <h3>{{State}}</h3>
+      <p>订单编号：{{ID}}</p>
+      <div class="FunctionBtn" *ngIf="orderList['State'] != 0 && orderList['State'] != 2">
+        <span *ngIf="orderList['State'] == 3" style="color: #ff4a02" (click)="ConfirmOrder()">确认收货</span>
+        <span *ngIf="orderList['State'] == 4">删除订单</span>
+      </div>
+    </div>
+    <div class="information">
+      <div class="Place">
+        <strong>下单信息</strong>
+        <p>下单时间：{{GetTimes(orderList['PayTimes'])}}</p>
+        <p>支付积分：{{orderList['Total']}}</p>
+        <p>积分类型：天天收益使用{{orderList['TotalBonus']}}积分，动态奖励使用{{orderList['TotalDongTai']}}积分</p>
+        <p>您的留言：{{orderList['Marks']}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="Addressee">
+    <strong>收件人信息</strong>
+    <p>
+      <span>姓名：{{Name}}</span>
+      <span class="Addressee-span">电话：{{Phone}}</span>
+      <span class="Addressee-span">详细地址：{{Address}}</span>
+    </p>
+  </div>
+  <div class="logistics">
+    <div class="logistics-strong"><strong>物流信息</strong><i (click)="tubiao = !tubiao" class="i" [class.i]="tubiao" [class.tubiao]="!tubiao"></i></div>
+    <div class="wrap">
+      <p *ngIf="orderList['State'] == 2">暂无</p>
+      <div *ngIf="orderList['State'] == 3 || orderList['State'] == 4 || orderList['State'] ==6">
+        <p>发货时间：<span>{{ orderList['KDTimes'] == null ? '——' : GetTimes(orderList['KDTimes'])}}</span></p>
+        <p>物流公司：{{orderList['Title']}}</p><br>
+        <p>物流单号：{{orderList['KDID']}}</p>
+        <!--<p>收货时间：{{orderList['EndTimes'] == null ? '——' : GetTimes(orderList['EndTimes'])}}</p>-->
+      </div>
+      <div *ngIf="tubiao == false && orderList['State'] == 3 || tubiao == false && orderList['State'] == 4 || tubiao ==false && orderList['State'] == 6">
+        <div class="xiantiao"></div>
+        <div style="margin-left: 0.41rem; font-size: 0.14rem">备注</div>
+        <div class="Remarks" *ngFor="let itemss of List">
+          <span><i style="color: #999999">货物名称:</i>{{itemss['Title']}}</span>
+          <span><i style="color: #999999">物流公司:</i></span>
+          <span><i style="color: #999999">物流单号:</i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 0.2rem">
+    <div style="width: 100%; height: 0.6rem; line-height: 0.6rem; background: #d8e2f8"><strong style="margin-left: 0.41rem">商品信息</strong></div>
+    <table class="table-deliverTable">
+      <thead>
+      <tr style="background: #f5f5f5; height: 0.5rem; line-height: 0.5rem">
+        <th colspan="1"><p style="margin-left: 0.41rem">商品名称</p></th>
+        <th colspan="1" style="text-align: center">单价</th>
+        <th colspan="1" style="text-align: center">数量</th>
+        <th colspan="1" style="text-align: center">小计</th>
+        <th colspan="1" style="text-align: center">操作</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let item of List; let i = index">
+      <tr style="heigth: 1.2rem; line-height: 0.4rem;border-bottom: 1px solid #e4e4e4">
+        <td rowspan="2">
+          <img src="{{item['Images']}}" alt="" style="width:100px; height: 100px;margin-left: 0.41rem">
+          <div style="vertical-align: middle; display: inline-block">
+            <span>{{item['Title']}}</span><br>
+            <span style="font-size: 0.14rem; color: #666666;">{{item['Params']}}</span>
+          </div>
+        </td>
+        <td rowspan="2" style="text-align: center">{{item['Price']}}</td>
+        <td rowspan="2" style="text-align: center">{{item['Num']}}</td>
+        <td rowspan="2" style="text-align: center">{{item['Price']*item['Num']}}</td>
+        <td class="specific-operation" rowspan="2" style="text-align: center">
+          <!--<span [routerLink]="['/admin/order/retreat',item['ID']]">申请售后</span>-->
+          <!--<span style="color: #ff4a02" (click)="ConfirmOrder()">确认收货</span>-->
+          <!--<span [routerLink]="['/admin/order/retreat',orderList['ID']]">退款</span>-->
+          <b class="text-zhuce">{{GetState(item['State'])}}</b>
+        </td>
+      </tr>
+      </tbody>
+      <tr style="height: 1.1rem; line-height: 1.1rem">
+        <td class="PaymentExpenses" colspan="5" ><p>支付积分:<i class="iconfont icon-jifen">{{orderList['Total']}}</i></p></td>
+      </tr>
+    </table>
+  </div>
+  </div>
+</div>

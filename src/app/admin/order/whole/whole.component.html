@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div id="AdminWrap">
+    <app-menu></app-menu>
+    <div id="AdminMain">
+        <div>
+            <ul class="Tabel">
+                <li routerLinkActive="action" ><a routerLink="allorders">所有订单</a></li>
+                <li>|</li>
+                <li routerLinkActive="action" ><a routerLink="deliver">待发货</a></li>
+                <li>|</li>
+                <li routerLinkActive="action" ><a routerLink="receipt">待收货</a></li>
+            </ul>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

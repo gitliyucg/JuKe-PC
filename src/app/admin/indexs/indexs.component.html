@@ -1,0 +1,134 @@
+<app-header></app-header>
+<div id="AdminWrap">
+<app-menu></app-menu>
+
+<div id="AdminMain">
+  <div class="title">您好 {{UserID}}，欢迎来到剧客网 <i class="icon iconfont">&#xe60d;</i></div>
+  <div class="head">
+    <div class="info">
+      <div><i class="ititle"></i>个人信息</div>
+      <div class="user">
+        <div class="touxiang"><img src="/assets/images/touxiang.png" width="80" height="80" alt=""></div>
+        <div class="infolist">
+          <p>会员账号　{{UserID}}</p>
+          <p>会员姓名　{{Name}}</p>
+          <p>报单中心　{{zhongxin}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="ann">
+      <div><i class="ititle"></i>公告</div>
+      <div class="infolist" *ngFor="let x of ann;">
+        <div><a routerLink="/admin/ann/view/{{x.ID}}">{{x.Title}}</a><span>{{GetTimes(x.Times)}}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="Wallet">
+    <div><i class="ititle"></i>我的钱包</div>
+    <ul>
+      <li><i class="icon iconfont i1">&#xe68d;</i><span>报单金额</span><strong>{{baodan}}</strong></li>
+      <li><i class="icon iconfont i2">&#xe63b;</i><span>天天奖励</span><strong>{{tiantian}}</strong></li>
+      <li><i class="icon iconfont i3">&#xe613;</i><span>动态奖励</span><strong>{{dongtai}}</strong></li>
+      <li><i class="icon iconfont i4">&#xe604;</i><span>购物积分</span><strong>{{ICE}}</strong></li>
+      <li><i class="icon iconfont i5">&#xe606;</i><span>结余积分</span><strong>{{jieyu}}</strong></li>
+      <li><i class="icon iconfont i6">&#xe65c;</i><span>股权收益</span><strong>{{guquan}}</strong></li>
+      <li><i class="icon iconfont i7">&#xe60c;</i><span>股权积分</span><strong>{{guquanfund}}</strong></li>
+    </ul>
+  </div>
+
+  <!--<div class="index-order">-->
+    <!--<div class="titlei"><i></i>我的订单</div>-->
+    <!--<table class="table OrderList-table">-->
+    <!--<thead>-->
+    <!--<tr>-->
+      <!--<td colspan="5">订单编号:1018<b>交易时间：2017-08-08 23:01:22</b></td>-->
+      <!--<td><i class="iconfont icon">&#xe686;</i></td>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tr>-->
+      <!--<td width="88"><img src="" width="88" height="66" alt=""></td>-->
+      <!--<td>-->
+        <!--<p>辻和金网 开化堂合作款纯铜茶滤</p>-->
+        <!--<p>官方标配 黄色</p>-->
+      <!--</td>-->
+      <!--<td>188</td>-->
+      <!--<td>2</td>-->
+      <!--<td rowspan="2">376</td>-->
+      <!--<td rowspan="2">待发货</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td width="88"><img src="" width="88" height="66" alt=""></td>-->
+      <!--<td>-->
+        <!--<p>辻和金网 开化堂合作款纯铜茶滤</p>-->
+        <!--<p>官方标配 黄色</p>-->
+      <!--</td>-->
+      <!--<td>188</td>-->
+      <!--<td>2</td>-->
+    <!--</tr>-->
+  <!--</table>-->
+
+    <!--&lt;!&ndash;<table class="table OrderList-table">&ndash;&gt;-->
+      <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+      <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td colspan="5">订单编号:1018<b>交易时间：2017-08-08 23:01:22</b></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td><i class="iconfont icon">&#xe686;</i></td>&ndash;&gt;-->
+      <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+      <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+      <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td width="88"><img src="" width="88" height="66" alt=""></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>辻和金网 开化堂合作款纯铜茶滤</p>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>官方标配 黄色</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>188</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>2</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td rowspan="2">376</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td rowspan="2">待发货</td>&ndash;&gt;-->
+      <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+      <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td width="88"><img src="" width="88" height="66" alt=""></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>辻和金网 开化堂合作款纯铜茶滤</p>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>官方标配 黄色</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>188</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>2</td>&ndash;&gt;-->
+      <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;</table>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<table class="table OrderList-table">&ndash;&gt;-->
+      <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+      <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td colspan="5">订单编号:1018<b>交易时间：2017-08-08 23:01:22</b></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td><i class="iconfont icon">&#xe686;</i></td>&ndash;&gt;-->
+      <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+      <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+      <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td width="88"><img src="" width="88" height="66" alt=""></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>辻和金网 开化堂合作款纯铜茶滤</p>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>官方标配 黄色</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>188</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>2</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td rowspan="2">376</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td rowspan="2">待发货</td>&ndash;&gt;-->
+      <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+      <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td width="88"><img src="" width="88" height="66" alt=""></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>辻和金网 开化堂合作款纯铜茶滤</p>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>官方标配 黄色</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>188</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td>2</td>&ndash;&gt;-->
+      <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;</table>&ndash;&gt;-->
+
+  <!--</div>-->
+
+  <!--End:AdminMain-->
+</div>
+
+</div>

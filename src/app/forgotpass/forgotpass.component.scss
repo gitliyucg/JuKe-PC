@@ -1,0 +1,27 @@
+#forgot{ width: 1000px; margin: 50px auto; border: #e4e4e4 solid 1px; border-radius: 5px; padding: 30px 0px;}
+#forgot ul{ clear: both;
+  overflow: hidden;}
+#forgot ul{ width: 608px; margin: 0 auto;}
+#forgot ul li{ float: left; margin-right: 10px; min-width: 40px; text-align: center;}
+#forgot ul li .qipao{ background: url("/assets/images/qipao2.png") no-repeat; background-position: center; height: 54px;
+  display: block; vertical-align: middle; line-height: 44px; color: #FFFFFF; font-size: 0.24rem; font-weight: bold; font-style: inherit;}
+#forgot ul li .qipao.active{ background: url("/assets/images/qipao.png") no-repeat; background-position: center;}
+#forgot ul li.line{ width: 200px;}
+#forgot ul li.line.active hr{ border: #02ff73 solid 2px; border-radius: 5px;}
+
+.login{ width: 320px; margin: 50px auto 50px auto;}
+.form-control-feedback{ right: inherit;}
+.login .form-group input{ padding-left: 30px;}
+.yzm,.local{ margin-bottom: 20px; clear: both;
+  overflow: hidden;}
+.yzm .left{ float: left; width: 200px;}
+.login .yzm .left input{width: 200px; height: 34px; line-height: 34px; padding: 6px 12px; border: none; border-bottom: 1px solid #CCCCCC;}
+.yzm .right{ float: right; width: 120px;}
+.login .yzm .has-error input{ border-bottom: 1px solid #a94442; color: #a94442;}
+.btn-default{ margin-left: 10px;}
+#Loginbtn,#Loginbtn2{ width: 100%; background: #ff4a02; color: #FFFFFF;}
+#Loginbtn:disabled,#Loginbtn2:disabled{ background: #cccccc;}
+
+.chenggong{ text-align: center; margin: 50px 0;}
+.chenggong a{ color: #ff4a02;}
+.tiaozhuan{ text-align: center; color: #027fff;}

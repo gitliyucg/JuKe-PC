@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>购买股权</div>
+
+    <form class="form-cont form-horizontal" [formGroup]="form">
+      <div class="form-group">
+        <label class="control-label col-sm-2">股权积分</label>
+        <div class="col-sm-3">
+          <input class="form-control" type="text" disabled="disabled" value="{{yue}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">转向代理</label>
+        <div class="col-sm-3">
+          <input class="form-control" type="text" formControlName="AcceptID">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">购买数额</label>
+        <div class="col-sm-3"><input type="number" class="form-control" formControlName="MoneySum"></div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-5"><button class="btn btn-confirm" (click)="onsubmit($event)" [disabled]="form.invalid">确认</button></div>
+      </div>
+
+    </form>
+
+    <table class="table tongyong table-striped">
+      <thead>
+      <tr>
+        <td>操作时间</td>
+        <td>交易方</td>
+        <td>收入</td>
+        <td>支出</td>
+        <td>余额</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let x of model;">
+        <td>{{GetTimes(x.Times)}}</td>
+        <td>{{x.AcceptID}}</td>
+        <td>{{x.Shouru}}</td>
+        <td>{{x.Zhichu}}</td>
+        <td>{{x.Balance}}</td>
+      </tr>
+
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,82 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>积分互转</div>
+
+    <form class="form-cont form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-sm-2">积分类型</label>
+        <div class="col-sm-3">
+          <select class="form-control" (change)="sel()" name="f1" [(ngModel)]="fangan1">
+            <option value="天天奖励">天天奖励</option>
+            <option value="动态奖励">动态奖励</option>
+            <!--<option value="报单金额">报单金额</option>-->
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">余　　额</label>
+        <div class="col-sm-3">
+          <input class="form-control" type="text" disabled="disabled" value="{{yue}}">
+         </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>接收会员ID</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" [formControl]="AcceptUserId">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">会员姓名</label>
+        <div class="col-sm-3">
+          <input class="form-control" type="text" disabled="disabled" value="{{uname}}">
+         </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>交易数额</label>
+        <div class="col-sm-3"><input type="number" class="form-control" name="money" [(ngModel)]="money"></div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-3"><button class="btn btn-confirm" (click)="onsubmit($event)">确认</button></div>
+      </div>
+
+    </form>
+
+    <table class="table tongyong table-striped">
+      <thead>
+      <tr>
+        <td>互转时间</td>
+        <td>对方ID</td>
+        <td>对方姓名</td>
+        <td>积分类型</td>
+        <td>交易数额</td>
+        <td>手续费</td>
+        <td>实际数额</td>
+        <td>互转类型</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let x of model;">
+        <td>{{GetTimes(x.TransferDate)}}</td>
+        <td>{{x.AcceptUserId}}</td>
+        <td>{{x.AcceptUserName}}</td>
+        <td>{{x.MoneyType}}</td>
+        <td>{{x.MoneySum}}</td>
+        <td>{{x.ServiceCharge}}</td>
+        <td>{{x.FactSum}}</td>
+        <td>{{x.TransferType}}</td>
+      </tr>
+
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

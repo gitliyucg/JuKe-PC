@@ -1,0 +1,73 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>复投</div>
+
+    <form class="form-cont form-horizontal" [formGroup]="formModel">
+      <div class="form-group">
+        <label class="control-label col-sm-2">报单金额余额</label>
+        <div class="col-sm-1">
+          <p class="control-label">{{wallet['RegBalance']}}</p>
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('num').touched && formModel.get('num').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>报单数</label>
+        <div class="col-sm-2">
+          <input type="number" min="1" class="form-control" formControlName="num" (input)="change($event.target.value)">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('num').dirty && formModel.get('num').hasError('min')">报单数需大于0</label>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('num').dirty && formModel.get('num').hasError('max')">报单上限为{{shangxian}},还能报{{futouMax}}单</label>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('money').touched && formModel.get('money').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>报单金额</label>
+        <div class="col-sm-2">
+          <input type="number" class="form-control" formControlName="money" (input)="oncha($event.target.value)">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('money').touched && formModel.get('money').hasError('max')">报单金额余额不足</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2">所需报单总额</label>
+        <div class="col-sm-2">
+          <p class="control-label">{{zonge}}</p>
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="chae != 0 && chae != zonge">还需{{chae}} 积分</label>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-2"><button class="btn btn-confirm" (click)="onSubmit($event)"  [disabled]="chaeOn || formModel.invalid">确认</button></div>
+      </div>
+
+    </form>
+
+    <table class="table tongyong table-striped">
+      <thead>
+      <tr>
+        <td>时间</td>
+        <td>报单数</td>
+        <td>类型</td>
+        <td>状态</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let x of model;let i = index;">
+        <td>{{GetTimes(x.RecordTime)}}</td>
+        <td>{{x.BaoDanNum}}</td>
+        <td>{{x.IsFuTou == 0 ? '报单' : '复投'}}</td>
+        <td>{{x.State == 0 ? '正常' : '到期'}}</td>
+      </tr>
+
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

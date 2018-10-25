@@ -1,0 +1,55 @@
+<app-header></app-header>
+<div class="index-main-box">
+  <div class="index-main">
+    <div id="indexslider">
+      <div class="index-img" id="index1img">
+        <img *ngFor="let b of banner;" src="{{b['Images']}}" [attr.data-href]="b['URL']" border='0' />
+
+      </div>
+      <ul class="index-pagination">
+        <li>
+          <a>
+            <div><span></span></div>
+          </a>
+        </li>
+        <li>
+          <a>
+            <div><span></span></div>
+          </a>
+        </li>
+        <li>
+          <a>
+            <div><span></span></div>
+          </a>
+        </li>
+        <li>
+          <a>
+            <div><span></span></div>
+          </a>
+        </li>
+        <li class="back"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<b class="hidden" *ngFor="let b of banner;let last1 = last">{{last1 ? haha(last1):''}}</b>
+<div class="shoufa">
+  <h2 class="titlei"><i></i>新品首发</h2>
+  <ul>
+    <li *ngFor="let x of newsPin;">
+      <a routerLink="/product/{{x['ID']}}"><img src="{{x['Images']}}" alt=""></a>
+      <p><a routerLink="/product/{{x['ID']}}">{{x['Title']}}</a></p>
+    </li>
+  </ul>
+</div>
+
+<div class="tuijian">
+  <h2 class="titlei"><i></i>人气推荐</h2>
+  <ul>
+    <li *ngFor="let a of model;">
+      <a routerLink="/product/{{a['ID']}}"><img src="{{a['Images']}}" alt=""></a>
+      <p><a routerLink="/product/{{a['ID']}}" title="{{a['Title']}}">{{GetTitle(a['Title'])}}</a></p>
+    </li>
+  </ul>
+</div>
+<app-carttop></app-carttop>

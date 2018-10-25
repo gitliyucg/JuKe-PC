@@ -1,0 +1,44 @@
+.title{ height: 37px; line-height: 37px;}
+i.icon{ color: #ff4a02;}
+.head{ clear: both; overflow: hidden;}
+.head .info{ float: left; width: 396px; height: 154px; border: 1px solid #e4e4e4; padding: 20px;}
+.head .ann{ float: right; width: 604px; height: 154px; border: 1px solid #e4e4e4; padding: 20px;}
+.user{ margin-top: 15px;}
+.touxiang{ float: left;}
+.head .info .infolist{ float: left; margin-left: 20px;}
+.head .info .infolist p,.head .ann .infolist div{ margin-bottom: 15px;}
+.head .ann .infolist{ margin-top: 15px;}
+.head .ann .infolist div{ clear: both; overflow: hidden;}
+.head .ann .infolist div a{ float: left;}
+.head .ann .infolist div span{ float: right;}
+
+.admin-index-state{ margin-top: 20px;
+  clear: both;
+  overflow: hidden; margin-bottom: 20px;}
+.admin-index-state div{ float: left; margin-right: 20px; width: 188px; padding: 20px 0 0px 0; color: #FFFFFF; position: relative;}
+.admin-index-state div p{ text-align: center; margin-bottom: 15px; font-size: 0.14rem;}
+.admin-index-state div p:nth-child(1){ font-size: 0.26rem; font-weight: bold;}
+.admin-index-state div:last-child{ margin-right: 0px;}
+.admin-index-state .state1{ background: #fc4861;}
+.admin-index-state .state2{ background: #fc6348;}
+.admin-index-state .state3{ background: #72d227;}
+.admin-index-state .state4{ background: #f6bd2c;}
+.admin-index-state .state5{ background: #1fb5fc;}
+.admin-index-state div i{ position: absolute; right: 1px; bottom: 3px; color: rgba(255,255,255,0.4); font-size: 0.26rem;}
+
+#Wallet{ border: 1px solid #e4e4e4; margin-top: 20px;  padding:20px 0px 0px 20px;}
+#Wallet ul{ clear: both;
+  overflow: hidden; margin-top: 20px;}
+#Wallet li{ width: 230px; margin-right: 19px; margin-bottom: 20px; float: left;
+  padding:35px 15px 35px 15px; background: #f5f5f5; text-align: right;}
+#Wallet li i{ float: left; vertical-align: middle;}
+#Wallet li span{ display: block; margin-bottom: 15px; color: #666666;}
+#Wallet li strong{ display: block; font-size: 24px;}
+#Wallet li i.i1{ color: #fc4861; font-size: 34px;}
+#Wallet li i.i2{ color: #fc6348; font-size: 34px;}
+#Wallet li i.i3{ color: #72d227; font-size: 40px;}
+#Wallet li i.i4{ color: #f6bd2c; font-size: 40px;}
+#Wallet li i.i5{ color: #1fb5fc; font-size: 40px;}
+#Wallet li i.i6{ color: #589b9d; font-size: 40px;}
+#Wallet li i.i7{ color: #fb4d30; font-size: 40px;}
+

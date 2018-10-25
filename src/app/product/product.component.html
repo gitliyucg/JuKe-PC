@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <div id="product">
+    <div class="main">
+      <img src="{{model['Images']}}" width="100%" alt="">
+    </div>
+    <div class="side">
+      <h2>{{model['Title']}}</h2>
+      <p class="brief">{{model['About']}}</p>
+      <hr>
+      <div class="price"><span>价格</span><strong>￥{{prices}}</strong></div>
+      <div class="guigemain" [class.error]="error">
+        <div>规格</div>
+        <ul class="guige">
+          <li *ngFor="let x of proparams;let i = index;" [attr.data-i]="i">{{x['Title']}}</li>
+        </ul>
+      </div>
+
+      <div class="size"><span>数量</span>
+        <button class="jian" [disabled]="size < 2" (click)="jian()">━</button><input class="num" type="text" [(ngModel)]="size" (input)="onsize($event.target.value)"><button class="jia" (click)="jia()" [disabled]="size >= maxSize">+</button>
+      </div>
+      <hr>
+      <div>
+        <button class="btn btn-buy" (click)="buy()">立即购买</button>
+        <button class="btn btn-cart" (click)="cart()">加入购物车</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="ProCont">
+  </div>
+</div>
+<app-carttop [Refresh]="num"></app-carttop>

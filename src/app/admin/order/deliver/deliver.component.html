@@ -1,0 +1,28 @@
+<table class="table OrderList-table" *ngFor="let item of OrderList; let i = index;">
+    <thead>
+        <tr>
+            <td colspan="5">订单编号: {{item['order']['ID']}}<b>交易时间：{{GetTimes(item['order']['Times'])}}</b></td>
+            <td><i *ngIf="item['order']['State'] > 3" style="color: #ff4a02;cursor: pointer;" class="iconfont icon" (click)="deleteOrders(item['order']['ID'],i)">&#xe686;</i></td>
+        </tr>
+    </thead>
+    <tr *ngFor="let items of item['product']">
+        <td width="88"><img class="deliver-img" [routerLink]="['/admin/order/whole/detail',item['order']['ID']]" src="{{items['Images']}}" width="88" height="66" alt=""></td>
+        <td>
+            <p class="deliver-title" style="display: inline-block" [routerLink]="['/admin/order/whole/detail',item['order']['ID']]">{{items['Title']}}</p>
+            <br>
+            <p style="display: inline-block">{{items['Params']}}</p>
+        </td>
+        <td>{{items['Price']}}</td>
+        <td>{{items['Num']}}</td>
+        <td>{{items['Price'] * items['Num']}}</td>
+        <td>{{States}}</td>
+    </tr>
+</table>
+<div class="pagebar" *ngIf="Total != 0">
+    <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+    </div>
+</div>
+<div class="Prompt" *ngIf="Total == 0">
+    <h3>您暂时没有相关订单！</h3>
+</div>

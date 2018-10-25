@@ -1,0 +1,75 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>报单金额充值</div>
+
+    <form class="form-cont form-horizontal" [formGroup]="formModel">
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>充值类型</label>
+        <p class="col-sm-2 control-label">
+          <input type="radio" value="0" formControlName="TID">积分　
+          <input type="radio" value="1" formControlName="TID">现金
+        </p>
+      </div>
+      <div class="form-group" [class.has-error]="formModel.get('Amount').touched && formModel.get('Amount').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>充值金额</label>
+        <div class="col-sm-2"><input type="number" class="form-control" formControlName="Amount"></div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>上传凭证</label>
+        <div class="col-sm-2">
+          <input type="file" ng2FileSelect [uploader]="uploader" (change)="file($event)" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">留言</label>
+        <div class="col-sm-5">
+          <textarea class="form-control" formControlName="MessageContent"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-5"><button class="btn btn-confirm" (click)="onSubmit()" [disabled]="formModel.invalid">确认</button></div>
+      </div>
+
+    </form>
+
+    <table class="table tongyong table-striped">
+      <thead>
+      <tr>
+        <td>充值日期</td>
+        <td class="col-md-1">处理状态</td>
+        <td class="col-md-1">凭证</td>
+        <td class="col-md-1">充值类型</td>
+        <td class="col-md-1">充值金额</td>
+        <td class="col-md-3">留言内容</td>
+        <td class="col-md-2">处理结果</td>
+        <td>处理时间</td>
+        <td>操作</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let x of model;let i = index;">
+        <td title="{{GetTimes(x.MessageTime)}}">{{GetTimes2(x.MessageTime)}}</td>
+        <td>{{x.ProcessState}}</td>
+        <td><img src="{{x.Pic}}" height="60" width="80" alt=""></td>
+        <td>{{x.TID==0?'积分':'现金'}}</td>
+        <td>{{x.Amount}}</td>
+        <td title="{{x.MessageContent}}" class="text-left">{{x.MessageContent == null ? '' : x.MessageContent.substring(0,50)}}</td>
+        <td>{{x.ReplyContent}}</td>
+        <td title="{{GetTimes(x.ReplyTime)}}">{{GetTimes2(x.ReplyTime)}}</td>
+        <td><button class="btn btn-danger" *ngIf="x.ProcessState === '正在处理中'" (click)="onCancel(x.DepositID,i)">取消</button></td>
+      </tr>
+
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

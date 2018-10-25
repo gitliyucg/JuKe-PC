@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="details-title">
+    <h4>{{listTxt['Title']}}</h4>
+    <span>发布时间：{{GetTimes(listTxt['Times'])}}</span>
+    <span style="margin-left: 0.4rem">浏览数:{{listTxt['Clicks']}}次</span>
+</div>
+<div class="details-content">
+    <div id="News-view-cont"></div>
+</div>
+<div class="change-page">
+    <span style="float: left" *ngIf="prev['ID'] === 0">上一篇：{{prev['Title']}}</span>
+    <a style="float: left" *ngIf="prev['ID'] > 0" href="/news/view/{{prev['ID']}}">上一篇：{{prev['Title']}}</a>
+    <span style="float: right" *ngIf="next['ID'] === 0">下一篇：{{next['Title']}}</span>
+    <a style="float: right" *ngIf="next['ID'] > 0" href="/news/view/{{next['ID']}}">下一篇：{{next['Title']}}</a>
+</div>
+<app-carttop></app-carttop>

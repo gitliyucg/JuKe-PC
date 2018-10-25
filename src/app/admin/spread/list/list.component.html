@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>会员列表</div>
+
+    <div class="seach form-inline">
+      <div class="form-group">
+        <label>会员ID/姓名：</label>
+        <input type="text" class="form-control form-seach-user" [(ngModel)]="un">
+      </div>
+
+      <div class="form-group">
+        <label>注册时间：</label>
+        <input type="text" class="form-control bsrp-time" placeholder="日期" (blur)="setSD($event.target.value)">
+      </div>
+      <div class="form-group">
+        <label>至&nbsp;</label>
+        <input type="text" class="form-control bsrp-time" placeholder="日期" (blur)="setED($event.target.value)">
+      </div>
+      <button type="submit" class="btn-seach" (click)="serach()"><i class="icon iconfont">&#xe611;</i></button>
+    </div>
+
+    <table class="table tongyong table-striped">
+      <thead>
+      <tr>
+        <td>注册日期</td>
+        <td>会员ID</td>
+        <td>会员姓名</td>
+        <td>会员状态</td>
+        <td>报单数</td>
+        <td>推荐人</td>
+        <td>操作</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let x of model;let i=index;">
+        <td>{{GetTimes(x.RegTime)}}</td>
+        <td>{{x.UserID}}</td>
+        <td>{{x.Name}}</td>
+        <td>{{x.FrozenState}}</td>
+        <td>{{x.BaoDanSum}}</td>
+        <td>{{x.RefereeMobile}}</td>
+        <td><a class="jihuo" routerLink="jihuo/{{x.UserID}}" *ngIf="x.FrozenState == '未激活'">激活</a></td>
+      </tr>
+
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

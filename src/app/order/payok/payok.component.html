@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <div class="payok">
+    <div class="main">
+      <div class="left"><img src="/assets/images/payok.png" alt=""></div>
+      <div class="right">
+        <h2>支付成功！</h2>
+        <p>您的订单号为<strong>{{id}}</strong>，我们将以最快的速度为您发货。</p>
+      </div>
+    </div>
+    <div class="btnlist">
+      <a routerLink="/admin/order/whole/detailed/{{id}}">查看订单详情</a>
+      <a routerLink="/index" class="two">继续购物</a>
+    </div>
+  </div>
+</div>

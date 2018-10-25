@@ -1,0 +1,130 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <div class="titlei"><i></i>商城购物>>
+    <span style="cursor:pointer" [routerLink]="['/admin/order/whole']">我的订单</span>>>
+    <span>售后编号：{{model['OID']}}</span>
+  </div>
+  <div class="retreat-wrap">
+    <div class="order-info">
+      <p><strong>订单信息</strong></p>
+      <div class="order-list-info">
+        <div class="commodity-info">
+          <a routerLink="/product/{{model['PID']}}" target="_blank"><img src="{{model['Images']}}" alt="" width="88" height="66"></a>
+          <p>
+            <a routerLink="/product/{{model['PID']}}" target="_blank">{{model['Title']}}</a><br>
+            <span style="font-size: 0.14rem; color: #666666">{{model['Params']}}</span>
+          </p>
+        </div>
+        <p>订单编号：{{model['OID']}}</p>
+        <p>下单时间：{{GetTimes(model['OTimes'])}}</p>
+        <p>商品单价：{{model['Price']}}</p>
+        <p>商品数量：{{model['Num']}}</p>
+        <p>商品总价：{{model['Price'] * model['Num']}}</p>
+      </div>
+      <div class="OrderInFo">
+        <p class="xian"></p>
+        <p>服务单号：{{model['ID']}}</p>
+        <p>申请时间：{{GetTimes(model['ReturnTimes'])}}</p>
+        <p>退款金额：{{model['Price'] * model['Num']}}</p>
+        <p>退款原因：{{model['Reason']}}</p>
+        <p>退款说明：{{model['Message']}}</p>
+      </div>
+    </div>
+    <!--提交退款申请-->
+    <div class="retreat-operation">
+      <div id="forgot">
+        <ul>
+          <li><i class="qipao active">1</i>买家申请退款</li>
+          <li class="line" [class.active]="model['State'] >=1"><hr></li>
+          <li><i class="qipao" [class.active]="model['State'] >=2">2</i>卖家处理退款</li>
+          <li class="line" [class.active]="model['State'] >= 3"><hr></li>
+          <li><i class="qipao" [class.active]="model['State'] == 4">3</i>退款成功</li>
+        </ul>
+      </div>
+
+      <hr class="geduan">
+
+      <!--等待卖家审核-->
+      <div *ngIf="model['State']==0" class="Pending">
+        <h3><strong>请等待卖家处理</strong></h3>
+        <p>
+          <span>处理状态：您已成功发起退款申请，请耐心等待卖家处理</span>
+        </p>
+        <button class="btn" (click)="Withdraw()">取消申请</button>
+      </div>
+
+      <!--卖家审核通过-->
+      <div *ngIf="model['State']==2" class="Pending">
+        <h3><strong>卖家同意退款</strong></h3>
+        <p>处理状态：等待退货</p>
+        <div class="li">
+          <b>退货地址：{{model['ReturnAddress']}}</b>
+          <p></p>
+        </div>
+
+        <br><br>
+        <h3><strong>填写物流信息</strong></h3>
+        <!--填写物流信息-->
+        <div class="li form-group">
+          <b><span class="text-danger">*</span>物流公司：</b>
+          <p>
+            <select class="form-control" [(ngModel)]="KDName">
+              <option value="顺丰速运" selected="selected">顺丰速运</option>
+              <option value="申通快递">申通快递</option>
+              <option value="圆通快递">圆通快递</option>
+              <option value="中通快递">中通快递</option>
+              <option value="韵达快递">韵达快递</option>
+              <option value="百世汇通">百世汇通</option>
+              <option value="宅急送快递">宅急送快递</option>
+              <option value="天天快递">天天快递</option>
+              <option value="德邦物流">德邦物流</option>
+              <option value="全峰快递">全峰快递</option>
+              <option value="优速物流">优速物流</option>
+              <option value="如风达">如风达</option>
+              <option value="邮政包裹">邮政包裹</option>
+              <option value="中铁快运">中铁快运</option>
+              <option value="新邦物流">新邦物流</option>
+              <option value="DHL">DHL</option>
+              <option value="EMS">EMS</option>
+            </select>
+          </p>
+        </div>
+        <div class="li form-group">
+          <b><span class="text-danger">*</span>物流单号：</b>
+          <p><input id="KDID" type="text" class="form-control" [(ngModel)]="KDID"></p>
+        </div>
+        <div class="text-zhuce li">
+          <b>温馨提示：</b>
+          <p>请将所退货商品及相关赠品(如有)包装好，且商品不影响二次销售，请勿发平邮或到付件。商品寄出后，您需要在规定时间内操作“填写物流信息”，以免退款超时关闭。</p>
+        </div>
+        <button class="btn btn-confirm" (click)="onSend($event)">提交</button>
+        <a routerLink="/admin/order/return" class="btn btn-default" style="margin-left: 20px;">返回</a>
+      </div>
+
+      <!--让货物飞一会-->
+      <div *ngIf="model['State']==3" class="Pending">
+        <h3><strong>货物已经寄出，等待卖家验收</strong></h3>
+        <p>寄出时间：{{GetTimes(model['KDTimes'])}}</p>
+        <a routerLink="/admin/order/return" class="btn btn-default">返回</a>
+      </div>
+
+      <!--拒绝退款-->
+      <div *ngIf="model['State']==1" class="Pending">
+        <h3><strong>卖家拒绝了您的退款</strong></h3>
+        <div class="li">
+          <b>拒绝原因：{{model['ReturnMess']}}</b>
+          <p></p>
+        </div>
+      </div>
+
+      <!--同意退款-->
+      <div *ngIf="model['State']==4" class="Pending">
+        <h3><strong>卖家已经退款</strong></h3>
+        <p>处理状态：已退还购物积分至您的动态奖励</p>
+        <p>完成时间：{{GetTimes(model['EndReturnTimes'])}}</p>
+        <p>退款积分：<strong class="text-zhuce">￥{{model['Price'] * model['Num']}}</strong></p>
+        <a routerLink="/admin/order/return" class="btn btn-default">返回</a>
+      </div>
+    </div>
+  </div>
+</div>

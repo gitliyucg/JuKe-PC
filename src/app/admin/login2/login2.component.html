@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>二级密码登录</div>
+
+    <form class="form-cont form-horizontal" [formGroup]="formModel">
+      <div class="form-group" [class.has-error]="formModel.get('pass').touched && formModel.get('pass').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>二级密码</label>
+        <div class="col-sm-3">
+          <input type="password" class="form-control" formControlName="pass">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-4"><button class="btn btn-confirm" (click)="onSubmit()" [disabled]="formModel.invalid">确认</button></div>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

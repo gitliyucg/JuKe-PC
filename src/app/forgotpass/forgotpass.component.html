@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <div id="forgot">
+
+    <ul>
+      <li><i class="qipao active">1</i>确认账号</li>
+      <li class="line" [class.active]="step2"><hr></li>
+      <li><i class="qipao" [class.active]="step2">2</i>新密码</li>
+      <li class="line" [class.active]="step3"><hr></li>
+      <li><i class="qipao" [class.active]="step3">3</i>完成</li>
+    </ul>
+
+    <form class="login" [formGroup]="formModel" *ngIf="!step2 && !step3">
+      <div class="form-group has-feedback" [class.has-error]="formModel.get('UserID').touched && formModel.get('UserID').invalid">
+        <input type="text" class="form-control" id="UserID" formControlName="UserID" autocomplete="no" placeholder="请输入您的账户名">
+        <span class="glyphicon form-control-feedback icon iconfont">&#xe641;</span>
+      </div>
+      <div class="form-group has-feedback" [class.has-error]="formModel.get('phone').touched && formModel.get('phone').invalid">
+        <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="请输入您的手机号码">
+        <span class="glyphicon form-control-feedback icon iconfont">&#xe6f9;</span>
+      </div>
+
+      <div class="yzm">
+        <div class="left" [class.has-error]="formModel.get('yzm').touched && formModel.get('yzm').invalid">
+          <input type="text" id="yzm" formControlName="yzm" placeholder="请输入验证码">
+        </div>
+        <button id="getyzm" class="btn btn-default" (click)="getyzm()" [disabled]="yzmOn">获取验证码</button>
+      </div>
+
+      <div><input id="Loginbtn" type="submit" (click)="onSubmit()" class="btn" value="下一步" [disabled]="formModel.invalid"></div>
+    </form>
+
+    <form class="login" [formGroup]="formModel2" *ngIf="step2 && !step3">
+      <div class="form-group has-feedback"><strong>您所修改密码的账户为：{{formModel.get('UserID').value}}</strong></div>
+      <div  formGroupName="password">
+        <div class="form-group has-feedback"
+             [class.has-error]="formModel2.get(['password','pass']).touched && formModel2.get(['password','pass']).invalid">
+          <input type="password" class="form-control" formControlName="pass" autocomplete="no" placeholder="请输入您的新密码">
+          <span class="glyphicon form-control-feedback icon iconfont">&#xe641;</span>
+        </div>
+        <div class="form-group has-feedback" [class.has-error]="formModel2.get(['password','pass2']).touched && formModel2.get(['password','pass2']).invalid">
+          <input type="password" class="form-control" formControlName="pass2" placeholder="请输入您的新密码">
+          <span class="glyphicon form-control-feedback icon iconfont">&#xe6f9;</span>
+        </div>
+        <div>
+        <p [hidden]="!formModel2.hasError('passValidator','password')" class="text-danger">
+          {{formModel2.getError('passValidator','password')?.info}}
+        </p>
+        </div>
+      </div>
+
+
+      <div><input id="Loginbtn2" type="submit" (click)="Edit()" class="btn" value="修改" [disabled]="formModel2.invalid"></div>
+    </form>
+
+    <div *ngIf="step3">
+      <h2 class="chenggong">设置新密码成功！立即<a routerLink="/login">前往登录</a></h2>
+      <p class="tiaozhuan">{{tiao}} 秒后自动跳转...</p>
+    </div>
+
+  </div>
+</div>

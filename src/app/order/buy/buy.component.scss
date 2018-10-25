@@ -1,0 +1,78 @@
+#Address{ padding: 20px 0 0px 18px; color: #666666; border: 1px solid #ededed; font-size: 0.12rem;}
+#Address ul{clear: both;overflow: hidden;}
+#Address li{ background: #f5f5f5; height: 117px;
+  float: left; width: 275px; margin-right: 20px; margin-bottom: 20px; border: 1px solid #ededed; padding: 10px; border-radius: 5px;
+  position: relative; cursor: pointer;
+}
+#Address li .city{ border-bottom: 1px solid #ededed; line-height: 30px; margin-bottom: 10px;}
+#Address li .area,#Address li .area-active{ word-break: break-all; line-height: 18px; height: 36px;}
+#Address li .area .phone,#Address li .area-active .phone{ margin-left: 15px;}
+#Address li .area-active{ display: none;}
+#Address li .edit{ display: none;}
+#Address li .edit button{ color: #fd8181;
+  display: none;}
+#Address li.active .edit button{display: block;}
+
+#Address li i.icon{ color: #ff4a02; position: absolute; right: 10px; bottom: 10px; display: none;}
+#Address li:hover,#Address li.active{ border-color: #ff4a02; background: #FFFFFF;}
+
+#Address li.active i.icon{ display: block;}
+#Address li.active .edit{ display: block;}
+#Address li.active .area{ display: none}
+#Address li.active .area-active{ display: block}
+#Address li span.moren{ font-size: 0.12rem; color: #ffffff; position: absolute; top: 10px; right: 10px; background: #cccccc; padding: 5px;}
+
+#Address li{ display: none;}
+#Address li:nth-child(1),#Address li:nth-child(2),#Address li:nth-child(3),#Address li:nth-child(4){ display: block;}
+
+.lookall{ clear: both; overflow: hidden; margin-top: -20px;}
+.lookall button,.lookall a{ color: #c97; text-decoration: none;}
+.lookall button:hover,.lookall a:hover{ color: #ff0036;}
+.lookall a{ float: right;}
+
+
+
+.info{ clear: both;}
+.info input{ float: left; width: 30px; margin-top: 35px;}
+.info .info-img{ width: 120px; float: left;}
+.info div{ float: left; line-height: 30px; padding-top: 12px;}
+
+.tfoot .text-left{}
+.tfoot .text-left span{ display: inline-block;}
+.price{ color: #ff4a02; font-size: 0.2rem; margin-right: 15px; vertical-align: middle;}
+.tfoot .check{ vertical-align: text-bottom; margin-bottom: 1px;}
+.tfoot .text-left .form-control{ display: inline-block; width: 300px;vertical-align: text-top; height: 35px;resize:none;}
+
+
+.zhao,.pass{ width: 100%; height: 100%; position: fixed; top:0; left: 0; background: #000000; z-index: 99;
+  background-color:rgba(0,0,0,0.6);filter:Alpha(opacity=60); display: none;}
+.zhaomain{ width: 800px; position: fixed; background: #FFFFFF; border: 10px solid #b4b4b4;
+  top:200px; left: calc(50% - 400px);}
+.zhaomain .head{ height: 50px; line-height: 50px; font-weight: bold; padding: 0 10px; clear: both; overflow: hidden; font-size: 0.16rem;}
+.zhaomain .head i{ float: right; margin-top: -1px; cursor: pointer; font-size: 0.12rem;}
+
+.pass{ display: none;}
+.passmain{ width: 300px; position: fixed; background: #FFFFFF; border: 1px solid #b4b4b4; border-radius: 5px;
+  top:200px; left: calc(50% - 150px);}
+.passmain .head{ line-height: 50px; height: 50px; text-align: center; width: 215px; margin: 0 auto;}
+.passmain .input{
+  .ul{ width: 215px; height: 36px; margin: 10px auto 30px auto; position: relative;}
+  .ul input{ display: inline-block; width: 35px; height: 36px; border-radius: 0; text-align: center;
+    border-left: 0;
+  }
+  .ul input:nth-child(1){border-left: 1px solid #ccc;}
+  .ul input:focus{border-left: 1px solid #66afe9; box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6)}
+  .ul input:disabled{ background: #FFFFFF; cursor: text;}
+}
+
+.passmain .foot{ border-top: 1px solid #c9c7c7;}
+.passmain .foot div{border-top: 1px solid #f5f5f5; padding: 10px 20px; clear: both;
+  overflow: hidden;}
+
+.passmain .foot button{ float: left;}
+.passmain .foot .btn-confirm{ padding: 6px 12px; float: right;}
+
+.jian{ height: 28px; line-height: 28px; width: 28px; font-size: 0.16rem;background-color:#ededed; border-radius: 0; border: 1px solid #CCCCCC; vertical-align: middle;}
+.jia{ height: 28px; line-height: 28px; width: 28px; font-size: 0.16rem; font-weight: bold;background-color:#ededed; border: 1px solid #CCCCCC; vertical-align: middle;}
+.jian[disabled],.jia[disabled]{cursor: not-allowed; box-shadow: none; opacity: .65;}
+.num{ width: 50px; height: 28px; line-height: 28px; border:1px solid #CCCCCC; border-left: none; border-right: none; vertical-align: middle; text-align: center;}

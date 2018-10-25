@@ -1,0 +1,144 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+*{ margin:0; padding:0; outline:none !important;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul, menu {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content: '';	content: none;}
+table{	border-collapse: collapse;	border-spacing: 0;}
+div img{ font-size:0px; border:none; padding:0; margin:0;}
+a img{	border: none;}
+a{text-decoration: none; color: #333333;}
+a:hover{ text-decoration: none; }
+/*-----------------------------颜色----------------------------------------------------*/
+$zhuse:#ff4a02;
+.text-zhuce{ color: $zhuse;}
+$thead:#d8e2f8;/*表格上的背景色*/
+
+/*-----------------------------宽高距离----------------------------------------------------*/
+.form-control.form-seach-user{ width: 130px; margin-right: 30px;}
+/*-----------------------------功能性----------------------------------------------------*/
+.vm{vertical-align: middle;}
+.form-vm{ vertical-align: -webkit-baseline-middle;}
+.clr{clear: both;}
+.float-right{ float: right;}
+.a-hand{cursor: pointer;}
+.btn.btn-confirm{ background: #ff4a02; color: #FFFFFF; padding: 6px 35px;}
+.btn.btn-confirm:disabled{ background: #cccccc; color: #FFFFFF; padding: 6px 35px;}
+.danger.control-label{ text-align: left; margin-left: -10px; color: #a94442;}
+.mt15{ margin-top: 15px;}
+.btn.btn-buy{ padding: 10px 20px; background: #ff4a02; color: #FFFFFF;}
+/*-----------------------------头尾----------------------------------------------------*/
+html{ font-size: 625%;}
+body{ width: 100vw;overflow-x: hidden;}
+header{ width: 100%; height: 68px; line-height: 68px; background: rgba(0,0,0,0.7); position: fixed; top: 0px; z-index: 999;}
+header #Header{
+  width:1200px;
+  margin:0 auto;}
+header #Logo{ float: left;}
+header #Logo img{ vertical-align: middle;}
+#Navigat{ float:right;}
+#Navigat li{ float: left; height: 68px; line-height: 68px; vertical-align: middle;}
+#Navigat li a{color: #FFF; font-size: 0.16rem; padding: 0 25px; display: block;}
+#Navigat li.active,#Navigat li:hover{
+  border-top: 5px solid $zhuse;
+  & a{ margin-top: -5px; color: $zhuse;}
+}
+
+footer{ width: 100vw; background: #373d41; margin-top: 30px;}
+#Footer{ width: 1200px; margin: 0px auto; padding: 50px 0 30px 0;}
+#Footer .foot-nav{clear: both; overflow: hidden;}
+#Footer ul{ width: 25%; float: left;}
+#Footer ul li{ height: 30px; line-height: 30px; color: #cccccc; font-size: 0.14rem;}
+#Footer ul li:nth-child(1){ color: #FFFFFF; font-size: 0.16rem;}
+#Footer a{color: #cccccc;}
+#Footer p{ margin-top: 30px; text-align: center;color: #FFFFFF;}
+
+
+/*-----------------------------内容----------------------------------------------------*/
+#Wrap{ width: 1200px; margin: 0 auto 20px auto;}
+#AdminWrap{ padding-top: 88px; width: 1200px; margin: 0 auto; clear: both; overflow: hidden;}
+
+#AdminMain{ width: 1020px; float: right;}
+.ititle{ border-left: 2px solid #ff4a02;border-right: 2px solid #ff4a02; border-radius: 5px; margin-right: 6px;}
+div.titlei{ padding: 10px 0 20px 0;}
+div.titlei i{border-left: 2px solid #ff4a02;border-right: 2px solid #ff4a02; border-radius: 5px; margin-right: 6px;}
+
+.OrderList-table{ border: 1px solid #CCCCCC;}
+.OrderList-table thead tr{ background: $thead;}
+.table.OrderList-table td{ vertical-align: middle;}
+.table.OrderList-table thead td:last-child{ text-align: right; padding-right: 20px;}
+.table.OrderList-table tbody td{ text-align: center;}
+.table.OrderList-table tbody td:nth-child(2){ text-align: left;}
+.table.OrderList-table td b{ margin-left: 150px;}
+
+
+.seach{ background: $thead; padding: 15px; margin-bottom: 20px;}
+.btn-seach{ height: 34px; vertical-align: middle; padding: 0px 7px; border: none; background: #FFFFFF; margin-left: 20px;}
+.btn-seach i{ color: $zhuse; font-size: 0.2rem; display: block; margin-top: -8px;}
+
+.table.tongyong{ border: 1px solid #CCCCCC; font-size: 0.14rem;}
+.table.tongyong thead tr{background: $thead; font-weight: bold; border-bottom: 1px solid #CCCCCC; color: #000000;}
+.table.tongyong thead tr td{}
+.table.tongyong td{ text-align: center; vertical-align: middle;}
+
+.content{ border:#CCCCCC solid 1px; padding: 20px;}
+
+/*-----------------------------cart----------------------------------------------------*/
+.titlei i{    border-left: 2px solid #ff4a02;
+  border-right: 2px solid #ff4a02;
+  border-radius: 5px;
+  margin-right: 16px;}
+.title-banner{ background: #d8e2f8; padding-left: 20px; height: 50px; font-size: 0.16rem; line-height: 50px; vertical-align: middle; font-weight: bold;}
+.cart-list{ margin-bottom: 20px;}
+.cart-list .thead{ background: #f5f5f5; line-height: 40px; vertical-align: middle; padding: 0 20px; text-align: center;}
+.cart-list .tbody{padding: 10px 20px; text-align: center; line-height: 82px; vertical-align: middle; border-bottom: 1px solid #e4e4e4;}
+.cart-list .tfoot{ height: 42px; line-height: 42px; vertical-align: middle; padding: 10px 20px;}
+.btn-icon-del{ font-size: 0.2rem; cursor: pointer;}
+.btn-icon-del:hover{ color: #ff4a02;}
+
+
+/*-----------------------------bootstrap重构----------------------------------------------------*/
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+  border-top: none;
+}
+.table-striped>tbody>tr:nth-of-type(odd){ background-color: #FFFFFF;}
+.table-striped>tbody>tr:nth-of-type(even){ background-color: #f5f4f4;}
+
+.form-cont label{ font-weight: normal;}
+.form-group p.control-label{ text-align: left;}
+/*分页*/
+.pagination{ margin: 0; padding: 0px; float: right;
+  li>span{ color: #000000; text-shadow: 0 1px 0 #ffffff; border-color: #dddddd #dddddd #cccccc;
+    padding: 4px 11px; background: #f5f5f5; cursor: pointer;
+    background-image: linear-gradient(to top, #ffffff, #dadada);
+    &:hover{ color:#000000; };
+  }
+  li.active span{background-color: #414141 !important; background-image: linear-gradient(to top, #555555, #222222);
+    border-color: #dddddd #dddddd #cccccc;
+    &:hover{border-color: #dddddd #dddddd #cccccc;};
+  }
+  li.disabled a{ color: #AAAAAA;
+    &:hover{ color:#AAAAAA; };
+  }
+  li.text{ height: 30px; line-height: 30px; padding: 0px 5px;}
+  li.text .num{width: 30px; height: 25px; line-height: 25px;}
+}

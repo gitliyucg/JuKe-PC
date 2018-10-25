@@ -1,0 +1,80 @@
+<app-header></app-header>
+<div id="AdminWrap">
+    <app-menu></app-menu>
+
+    <div class="titlei"><i></i>收货地址管理</div>
+    <div class="Addaddress"><i class="iconfont" style="color: #e6ac01;margin-right: 0.1rem">&#xe6bf;</i><span (click)="Add()">添加收货地址</span></div>
+
+    <div class="Administration">
+        <div class="AdministrationList" *ngFor="let item of AddressInformation; let i = index;">
+            <div class="address">
+                <strong style="margin-left: 0.14rem">{{item.Name}}</strong><span *ngIf="item.State == 1" class="Defaultaddress">默认地址</span>
+            </div>
+            <span class="Consignee"><span style="color: #808080">收货人：</span>{{item.Name}}</span>
+            <p><span style="color: #808080">所在地区：</span>{{item.Province}}&nbsp;{{item.City}}&nbsp;{{item.Areas}}</p>
+            <p><span style="color: #808080">详细地址：</span>{{item.Address1}}</p>
+            <p style="display: inline-block"><span style="color: #808080">联系电话：</span>{{item.Phone}}</p>
+            <p class="operation">
+                <span style="color: #ff4a02" *ngIf="item.State != 1" (click)="postAddress(item.ID,i)">设为默认</span>
+                <span style="color: #027fff" (click)="EditInformation(item)">编辑</span>
+                <span style="margin-right: 0.2rem" (click)="DeleteAddress(item.ID,i)">删除</span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="mask" *ngIf="show">
+    <div class="Add">
+        <i><i class="iconfont" (click)="Cancel()">&#xe61b;</i></i>
+        <form style="margin-left: 1.5rem" class="form-cont form-horizontal" [formGroup]="formModel">
+            <div class="Adddetails form-group"><i></i><strong style="margin-left: 0.05rem;margin-bottom: 0.14rem">{{titleInformation}}</strong></div>
+            <div class="form-group">
+                <label class="control-label col-sm-2"><span class="text-danger" style="color: #fc1414">*</span>所在地区：</label>
+                <div class="col-sm-2">
+                    <select class="form-control" (change)="changeProvince()" formControlName="Province" placeholder="请选择" >
+                        <option value="{{Province}}">{{Province}}</option>
+                        <option *ngFor="let province of provinceData" value="{{province.id}}|{{province.name}}">{{province.name}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" (change)="changeCity()" formControlName="City" placeholder="请选择" >
+                        <option value="{{City}}">{{City}}</option>
+                        <option *ngFor="let items of cityData" value="{{items.id}}|{{items.name}}">{{items.name}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" formControlName="Areas" (change)="changeRegion()" placeholder="请选择">
+                        <option value="{{Areas}}">{{Areas}}</option>
+                        <option *ngFor="let item of regionsData" value="{{item.id}}|{{item.name}}">{{item.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">详细地址：</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" formControlName="Address1" placeholder="详细地址，街道，门牌号等" style="resize:none;height: 0.5rem" value=""></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2"><span class="text-danger" style="color: #fc1414">*</span>收货人：</label>
+                <div class="col-sm-2">
+                    <input formControlName="Name" value="" class="form-control">
+                </div>
+                <div [class.has-error] = "formModel.get('Phone').touched && formModel.get('Phone').invalid">
+                    <label class="control-label col-sm-2"><span class="text-danger" style="color: #fc1414">*</span>联系电话：</label>
+                    <div class="col-sm-2">
+                        <input formControlName="Phone" value="" class="form-control">
+                    </div>
+                    <label class="control-label" *ngIf="formModel.get('Phone').touched && formModel.get('Phone').invalid" >请输入正确的手机号格式</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="moren" class="control-label col-lg-3"> <input type="checkbox" [checked]="checkeds" id="moren" (click)="checkeds = !checkeds">&nbsp;&nbsp;&nbsp;&nbsp;设为默认 </label>
+                <button class="btn col-sm-1" style="color: white;background: #ff4a02;margin-left: 1.55rem" [disabled]=" btnDisable || formModel.get('Province').value == '' || formModel.get('City').value == '' || formModel.get('Areas').value == '' || formModel.get('Address1').value == '' || formModel.get('Name').value == '' || formModel.get('Phone').value == '' || formModel.get('Phone').invalid " (click)="UploadAddress()" >确定</button>
+                <button class="btn col-sm-1" style="color: #ff4a02;background: white;border: 1px solid #ff4a02;margin-left: 0.3rem" (click)="Cancel()">取消</button>
+            </div>
+      </form>
+    </div>
+</div>
+
+
+

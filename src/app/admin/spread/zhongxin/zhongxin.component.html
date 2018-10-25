@@ -1,0 +1,169 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>报单中心</div>
+
+    <form class="form-cont form-horizontal" [formGroup]="formModel" *ngIf="formModel.get('States').value === '' || formModel.get('States').value === 1">
+      <div class="form-group" [class.has-error]="formModel.get('Name').touched && formModel.get('Name').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>姓名</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="Name">
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('IDNumber').touched && formModel.get('IDNumber').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>身份证号码</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="IDNumber">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('IDNumber').touched && formModel.get('IDNumber').hasError('pattern')">身份证号码格式错误</label>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('Phone').touched && formModel.get('Phone').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>手机号码</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="Phone">
+        </div>
+        <label class="col-sm-4 danger control-label" *ngIf="formModel.get('Phone').touched && formModel.get('Phone').hasError('pattern')">手机号码格式错误</label>
+      </div>
+
+
+      <div class="form-group" [class.has-error]="formModel.get('Province').touched && formModel.get('Province').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>省份</label>
+        <div class="col-sm-4">
+          <select class="form-control" (change)="selpro()" formControlName="Province">
+            <option *ngFor="let item of proviceData" value="{{item.id}}|{{item.name}}">{{item.name}}</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="form-group" [class.has-error]="formModel.get('City').touched && formModel.get('City').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>城市</label>
+        <div class="col-sm-4">
+          <select class="form-control" (change)="selcity()" formControlName="City" [(ngModel)]="City">
+            <option *ngFor="let item of cityData" value="{{item.id}}|{{item.name}}">{{item.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('Areas').touched && formModel.get('Areas').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>地区</label>
+        <div class="col-sm-4">
+          <select class="form-control" formControlName="Areas" [(ngModel)]="Areas">
+            <option *ngFor="let item of areasData" value="{{item.id}}|{{item.name}}">{{item.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('Address').touched && formModel.get('Address').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>详细地址</label>
+        <div class="col-sm-6">
+          <textarea class="form-control" formControlName="Address">
+
+          </textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>上传身份证</label>
+        <div class="col-sm-3 text-center">
+          <span class="form-vm">身份证正面</span>
+          <div class="iconfile">
+            <label for="img1" class="icon iconfont" *ngIf="formModel.get('States').value != 1">&#xe607;</label>
+            <label for="img1" class="icon iconfont" *ngIf="formModel.get('States').value == 1"><img src="{{formModel.get('Images1').value}}" width="160" height="120" alt=""></label>
+            <input type="file" id="img1" ng2FileSelect [uploader]="uploader" (change)="file()" style="display: none;" />
+          </div>
+        </div>
+        <div class="col-sm-3 text-center">
+          <span class="form-vm">身份证反面</span>
+          <div class="iconfile">
+            <label for="img2" class="icon iconfont" *ngIf="formModel.get('States').value != 1">&#xe607;</label>
+            <label for="img2" class="icon iconfont" *ngIf="formModel.get('States').value == 1"><img src="{{formModel.get('Images2').value}}" width="160" height="120" alt=""></label>
+            <input type="file" id="img2" ng2FileSelect [uploader]="uploader" (change)="file2()" style="display: none;" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-4"><button class="btn btn-confirm" (click)="onSubmit()" [disabled]="formModel.invalid">确认</button></div>
+      </div>
+
+    </form>
+
+    <div class="form-cont form-horizontal" *ngIf="formModel.get('States').value === 0 || formModel.get('States').value === 2">
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>姓名</label>
+        <div class="col-sm-4">
+          <p class="control-label">{{formModel.get('Name').value}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>身份证号码</label>
+        <div class="col-sm-4">
+          <p class="control-label">{{formModel.get('IDNumber').value}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>手机号码</label>
+        <div class="col-sm-4">
+          <p class="control-label">{{formModel.get('Phone').value}}</p>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>省份</label>
+        <div class="col-sm-4">
+          <p class="control-label">{{binPro}}</p>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>城市</label>
+        <div class="col-sm-4">
+          <p class="control-label">{{binCity}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>地区</label>
+        <div class="col-sm-4">
+          <p class="control-label">{{binAreas}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>详细地址</label>
+        <div class="col-sm-6">
+          <p class="control-label">{{formModel.get('Address').value}}</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>上传身份证</label>
+        <div class="col-sm-3 text-center">
+          <span class="form-vm">身份证正面</span>
+          <div class="iconfile">
+            <img src="{{formModel.get('Images1').value}}" width="160" height="120" alt="">
+          </div>
+        </div>
+        <div class="col-sm-3 text-center">
+          <span class="form-vm">身份证反面</span>
+          <div class="iconfile">
+            <img src="{{formModel.get('Images2').value}}" width="160" height="120" alt="">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

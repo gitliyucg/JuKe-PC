@@ -1,0 +1,27 @@
+.prompt{
+  width: 0.4rem;
+  height: 0.9rem;
+  position: fixed;
+  right: 0;
+  top:50%;
+  margin-top: -0.45rem;
+  z-index: 999;
+}
+.prompt div{
+  background: #373d41;
+  height: 40px;
+  text-align: center;
+  line-height: 36px;
+}
+.prompt img{
+  width: 0.2rem;
+  height: 0.2rem;
+}
+.prompt i{
+  color: white;font-size: 0.2rem;
+}
+.prompt .cart{border-bottom: 1px solid #4e5262; cursor: pointer; position: relative;}
+.prompt .cart span{position: absolute; right: 2px; top: 6px; border-radius: 10px; width: 16px; height: 16px; line-height: 16px; vertical-align: middle;
+  background: #ff4a02; color: #FFFFFF; font-size: 0.12rem;
+}
+.prompt .top{border-top: 1px solid #181a1e; cursor: pointer;}

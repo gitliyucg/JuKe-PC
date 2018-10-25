@@ -1,0 +1,20 @@
+#Login{ padding: 30px 0;}
+#Login p{ float: left; width: 800px;}
+#Login p img{ margin: 0 auto; display: block;}
+#Login .login{ background: #FFFFFF; float: right; width: 400px; border: 1px solid #CCCCCC; border-radius: 5px; padding: 20px 30px; margin-top: 100px;}
+#Login .login h1{ font-size: 0.24rem; margin: 0px 0 20px 0;}
+.form-control-feedback{ right: inherit;}
+#Login .login input{ padding-left: 30px;}
+#Login .login .btn{ width: 100%; background: #ff4a02; color: #FFFFFF;}
+.yzm,.local{ margin-bottom: 20px; clear: both;
+  overflow: hidden;}
+.yzm .left{ float: left; width: 200px;}
+#Login .login .yzm .left input{width: 200px; height: 34px; line-height: 34px; padding: 6px 12px; border: none; border-bottom: 1px solid #CCCCCC;}
+.yzm .right{ float: right; width: 120px;}
+#v_container{ width: 100%; height: 34px;}
+#Login .login .yzm .has-error input{ border-bottom: 1px solid #a94442; color: #a94442;}
+
+
+
+.local .left{ float: left; width: 200px;}
+.local .right{ float: right; width: 120px;}

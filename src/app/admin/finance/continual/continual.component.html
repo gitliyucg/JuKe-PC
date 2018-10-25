@@ -1,0 +1,52 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>收支流水</div>
+
+    <div class="seach form-inline">
+      <div class="form-group">
+        <label>记录时间：</label>
+        <input type="text" class="form-control bsrp-time" placeholder="日期" (blur)="setSD($event.target.value)">
+      </div>
+      <div class="form-group">
+        <label>至&nbsp;</label>
+        <input type="text" class="form-control bsrp-time" placeholder="日期" (blur)="setED($event.target.value)">
+      </div>
+      <button type="submit" class="btn-seach" (click)="serach()"><i class="icon iconfont">&#xe611;</i></button>
+    </div>
+
+    <table class="table tongyong table-striped">
+      <thead>
+      <tr>
+        <td>记录日期</td>
+        <td>交易对方</td>
+        <td>收支原因</td>
+        <td>积分类型</td>
+        <td>收入</td>
+        <td>支出</td>
+        <td>积分余额</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let x of model;">
+        <td>{{GetTimes(x.RecordDate)}}</td>
+        <td>{{x.TradUserId}}</td>
+        <td>{{x.Reason}}</td>
+        <td>{{x.MoneyType}}</td>
+        <td>{{x.IncomeSum}}</td>
+        <td>-{{x.SpendSum}}</td>
+        <td>{{x.Balance}}</td>
+      </tr>
+
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

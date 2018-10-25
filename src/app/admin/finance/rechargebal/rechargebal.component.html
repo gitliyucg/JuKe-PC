@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>天天奖励充值</div>
+
+    <form class="form-cont form-horizontal" [formGroup]="formModel">
+      <div class="form-group" [class.has-error]="formModel.get('Money').touched && formModel.get('Money').invalid">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>充值金额</label>
+        <div class="col-sm-2"><input type="number" class="form-control" formControlName="Money"></div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"><span class="text-danger">*</span>上传凭证</label>
+        <div class="col-sm-2">
+          <input type="file" ng2FileSelect [uploader]="uploader" (change)="file($event)" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">留言</label>
+        <div class="col-sm-5">
+          <textarea class="form-control" formControlName="Message"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-5"><button class="btn btn-confirm" (click)="onSubmit($event)" [disabled]="formModel.invalid">确认</button></div>
+      </div>
+
+    </form>
+
+    <table class="table tongyong table-striped">
+      <thead>
+      <tr>
+        <td>充值日期</td>
+        <td class="col-md">处理状态</td>
+        <td class="col-md-1">凭证</td>
+        <td class="col-md-1">充值金额</td>
+        <td class="col-md-3">留言内容</td>
+        <td class="col-md-2">处理反馈</td>
+        <td>完成时间</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let x of model;let i = index;">
+        <td title="{{GetTimes(x.Times)}}">{{GetTimes2(x.Times)}}</td>
+        <td>{{GetState(x.States)}}</td>
+        <td><img src="{{x.Pic}}" height="60" width="80" alt=""></td>
+        <td>{{x.Money}}</td>
+        <td title="{{x.Message}}" class="text-left">{{x.Message == null ? '' : x.Message.substring(0,50)}}</td>
+        <td>{{x.FeedBack}}</td>
+        <td title="{{GetTimes(x.EndTime)}}">{{GetTimes2(x.EndTime)}}</td>
+      </tr>
+
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

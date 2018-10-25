@@ -1,0 +1,89 @@
+*{ margin:0; padding:0; list-style:none;}
+.index-main {
+  z-index:55;
+  position:relative;
+  width:100vw;
+  margin:0 auto;
+}
+.index-main-box {
+  position:relative;
+  display:block;
+  overflow:hidden;
+}
+#indexslider {
+  position:relative;
+  width:100vw;
+  left:50%;
+  margin-left:-50%;
+}
+#index1img {
+  display:block;
+  width:100vw;
+  overflow:hidden;
+}
+.index-main img {
+  width:100vw;
+  cursor: pointer!important;
+}
+.index-pagination {
+  position:absolute;
+  z-index:66;
+  top:90%;
+  left:55%;
+  height:30px;
+  width:210px;
+  margin-left:-100px;
+  text-align:center;
+}
+.index-pagination li {
+  display:inline-block;
+  width:30px;
+  position:relative;
+  float:left;
+  height:23px;
+  margin-right:4px;
+  overflow:hidden;
+  display: none;
+}
+.index-pagination li a {
+  position:relative;
+  z-index:666;
+  display:block;
+  height:4px;
+  color:#FFFFFF;
+  text-align:center;
+}
+.index-pagination li a div {
+  position:relative;
+  z-index:555;
+  display:block;
+  height:4px;
+  background:#000000;
+}
+.index-pagination li a div span {
+  position:absolute;
+  top:0px;
+  left:0px;
+  height:4px;
+  width:0px;
+  background:#FFF;
+}
+
+.shoufa{ width: 1200px; margin: 40px auto;}
+.shoufa ul{ clear: both; overflow: hidden; margin-top: 20px;}
+.shoufa ul li{ float: left; width: 380px; margin-right: 30px; margin-bottom: 30px;}
+.shoufa ul li img{ width: 380px; height: 280px;}
+.shoufa ul li:nth-child(3n + 3){ margin-right: 0px;}
+.shoufa ul li p{ font-size: 0.16rem; font-weight: bold; margin-top: 15px;}
+
+.tuijian{ width: 1200px; margin: 40px auto;}
+.tuijian ul{ clear: both; overflow: hidden; margin-top: 20px;}
+.tuijian ul li{ float: left; width: 285px; margin-right: 20px; margin-bottom: 20px;}
+.tuijian ul li:nth-child(1){ width: 590px; height: 500px;}
+.tuijian ul li:nth-child(1) img{ width: 570px; height: 500px;}
+.tuijian ul li img{ width: 285px; height: 220px;}
+.tuijian ul li:nth-child(4n + 1){ margin-right: 0px;}
+.tuijian ul li:nth-child(3),.tuijian ul li:nth-child(5),.tuijian ul li:nth-child(9){ margin-right: 0px;}
+.tuijian ul li p{ font-size: 0.16rem; font-weight: bold; margin-top: 10px; line-height: 30px;}
+
+.index-img img{ width: 100vw;}

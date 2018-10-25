@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="jum-wrop">
+    <div class="jumbotron">
+        <h2 style="font-family: 方正正大黑简体">十年历程</h2>
+        <p style="margin-top: 0.7rem">2002--2017历经十余年，公司秉承诚信天下、合作共赢的理念，开阔的胸怀接收来自</p>
+        <p style="margin-top: 0.3rem">五湖四海的精英，努力打造民族品牌，我们相信您的加入会给企业带来新的“血液”与精</p>
+        <p style="margin-top: 0.3rem">神，十年磨一剑，共同为华夏文化做出贡献。</p>
+    </div>
+    <video class="video-jum" src="http://jk.jukezc.com/TmwCoAIOfJcdNe1WW44lqesO8MPifM6dNhWUyLf45m47fFoGRMNiNw.mp4"
+    autoplay="autoplay" loop="loop"></video>
+</div>
+<div class="news-content">
+    <div class="news-content-one" *ngFor="let item of news;">
+        <img class="getInto" src="{{item.Images}}" alt="" height="100%" style="vertical-align: top;width: 4rem;" [routerLink]="['/news/view',item.ID]">
+        <div class="news-content-font" style="position: relative">
+            <div class="news-content-fonts">
+                <p class="news-content-tit getInto" style="font-size: 0.18rem;color: #333333" [routerLink]="['/news/view',item.ID]">{{item.Title}}</p>
+                <P class="news-content-xiangqing">
+                    {{item.About}}
+                </P>
+                <p class="date">{{GetTimes(item.Times)}}</p>
+            </div>
+        </div>
+    </div>
+    <button class="load-btn" (click)="loadMore()" *ngIf="news.length < total">
+        加载更多 <i class="iconfont">&#xe6e2;</i>
+    </button>
+<app-carttop></app-carttop>
+</div>

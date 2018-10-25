@@ -1,0 +1,165 @@
+.OrderWarp{
+    width: 100%;
+    display: flex;
+}
+.OrderNumber{
+    position: relative;
+    flex: 1;
+    text-align: center;
+    height: 1.8rem;
+    width: 3.19rem;
+    border: 1px solid #e4e4e4;
+}
+.OrderNumber h3{
+    margin-top: 0.4rem;
+    font-size: 0.32rem;
+    color: #ff4a02;
+}
+.OrderNumber p{
+    margin-left: 0;
+    margin-top: 0.4rem;
+}
+.FunctionBtn{
+    width: 100%;
+    height: 0.4rem;
+    border: 1px solid #e4e4e4;
+    background: #f5f5f5;
+    position: absolute;
+    bottom: 0;
+    line-height: 0.4rem;
+    font-size: 0.14rem;
+    text-align: center;
+}
+.FunctionBtn span{
+    cursor: pointer;
+}
+
+
+.logistics{
+    width: 100%;
+    border: 1px solid #e4e4e4;
+    margin-top: 0.2rem;
+}
+.logistics-strong{
+    position: relative;
+    width: 100%;
+    padding: 0 0.4rem;
+    height: 0.4rem;
+    background: #f5f5f5;
+    line-height: 0.4rem;
+    display: inline-block;
+  & span{
+    margin-left: 1rem;
+    color: #999999;
+  }
+}
+.i{
+    position: absolute;
+    width: 0.18rem;
+    height: 0.18rem;
+    background-image: url("../../../../../assets/images/xia.png");
+    right: 0.7rem;
+    top:50%;
+    margin-top: -0.09rem;
+}
+.tubiao{
+    position: absolute;
+    width: 0.18rem;
+    height: 0.18rem;
+    background-image: url("../../../../../assets/images/shang.png");
+    right: 0.7rem;
+    top:50%;
+    margin-top: -0.09rem;
+}
+.xinxi{
+    width: 90%;
+    margin: 0 auto;
+}
+.logistics .wrap{ padding: 10px 0.4rem;}
+.logistics .wrap p{
+    display: inline-block;
+    width: 4rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+}
+.logistics-mess{border-top: 1px solid #e4e4e4; margin-top: 10px; padding-top: 10px; clear: both;
+  overflow: hidden;}
+.logistics-mess .left{ float: left; width: 0.7rem;}
+.logistics-mess .Remarks{ float: left;}
+i{
+    font-style: normal;
+    color: #e4e4e4;
+}
+
+
+.information{
+    flex: 2;
+    display: flex;
+    width: 5rem;
+    height: 1.8rem;
+    margin-left: 0.2rem;
+    border: 1px solid #e4e4e4;
+}
+.Payment{
+    flex: 1;
+}
+.Payment strong{
+    line-height: 60px;
+}
+.Payment p{
+    line-height: 30px;
+}
+.Division{
+    display: inline-block;
+    width: 1px;
+    height: 1.38rem;
+    background: #e4e4e4;
+    margin-top: 0.2rem;
+}
+.Place{
+    flex: 1;padding-left: 0.4rem;
+}
+.Place strong{
+    line-height: 50px;
+}
+.Place p{
+    line-height: 30px;
+}
+.Addressee{
+  padding-left: 0.4rem;
+    margin-top: 0.2rem;
+    height: 1rem;
+    width: 100%;
+    border: 1px solid #e4e4e4;
+    overflow: hidden;
+}
+.Addressee strong{
+    line-height: 60px;
+}
+.Addressee span{
+    line-height: 30px;
+    margin-top: 0.2rem;
+  margin-right: 0.4rem;;
+}
+.Addressee span:nth-last-child(1){ margin-right: 0rem;}
+.table-deliverTable{
+    width: 100%;
+    border: 1px solid #e4e4e4;
+}
+.PaymentExpenses :after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.PaymentExpenses p{
+    float: right;
+    margin-right: 0.75rem;
+}
+.PaymentExpenses p i{
+    color: #ff4a02;
+    font-style: normal;
+}
+.detailed-operation span{
+    cursor: pointer;
+    display: block;
+}

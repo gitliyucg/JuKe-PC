@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>公告</div>
+
+    <div class="content">
+      <h3>{{model['Title']}}</h3>
+      <div [innerHTML]="model['Contents']">
+      </div>
+    </div>
+    <div><a routerLink="/admin/ann" class="btn btn-close">关闭</a></div>
+  </div>
+
+</div>

@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>收益转换</div>
+
+    <form class="form-cont form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-sm-2">转换类型</label>
+        <div class="col-sm-3">
+          <select class="form-control" (change)="sel()" name="f1" [(ngModel)]="fangan1">
+            <option *ngFor="let x of fanganA;" value="{{x.id}}">{{x.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">余　　额</label>
+        <div class="col-sm-3">
+          <input class="form-control" type="text" disabled="disabled" value="{{yue}}">
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">转　　向</label>
+        <div class="col-sm-3">
+          <select class="form-control" name="zhuanxiang" [(ngModel)]="zhuanxiang">
+            <option *ngFor="let x of fanganB;" value="{{x.name}}">{{x.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">转换数额</label>
+        <div class="col-sm-3"><input type="number" class="form-control" name="money" [(ngModel)]="money"></div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2"></label>
+        <div class="col-sm-5"><button class="btn btn-confirm" (click)="onsubmit()" [disabled]="F5">确认</button></div>
+      </div>
+
+    </form>
+
+    <table class="table tongyong table-striped">
+      <thead>
+      <tr>
+        <td>操作时间</td>
+        <td>转换类型</td>
+        <td>收入</td>
+        <td>支出</td>
+        <td>货币类型</td>
+        <td>货币余额</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let x of model;">
+        <td>{{GetTimes(x.RecordDate)}}</td>
+        <td>{{x.Reason}}</td>
+        <td>{{x.IncomeSum}}</td>
+        <td>{{x.SpendSum}}</td>
+        <td>{{x.MoneyType}}</td>
+        <td>{{x.Balance}}</td>
+      </tr>
+
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

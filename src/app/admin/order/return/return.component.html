@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div id="AdminWrap">
+    <app-menu></app-menu>
+    <div id="AdminMain">
+        <div class="titlei"><i></i>售后/退货</div>
+        <table class="table OrderList-table" *ngFor="let item of OrderList; let i = index;">
+            <thead>
+            <tr>
+                <td colspan="2">售后编号: {{item['ID']}}<b>申请时间：{{GetTimes(item['ReturnTimes'])}}</b></td>
+                <td class="text-center">退款金额</td>
+                <td class="text-center">退货原因</td>
+                <td><i *ngIf="item['State'] == 4" style="color: #ff4a02;cursor: pointer;" class="iconfont icon" (click)="deleteOrders(item['ID'],i)">&#xe686;</i></td>
+            </tr>
+            </thead>
+            <tr>
+                <td width="88"><a routerLink="view/{{item['ID']}}"><img src="{{item['Images']}}" width="88" height="66" alt=""></a></td>
+                <td width="500">
+                    <p><a routerLink="view/{{item['ID']}}">{{item['Title']}}</a></p>
+                    <p>{{item['Params']}}</p>
+                </td>
+              <td>{{item['Price'] * item['Num']}}</td>
+              <td>{{item['Reason']}}</td>
+              <td>
+                <span style="color: #ff4a02;">{{GetState(item['State'])}}</span>
+                <p *ngIf="item['State'] == 0"><button class="btn btn-link" (click)="onReturn(i)">取消退款</button></p>
+                <p *ngIf="item['State'] == 4"><a routerLink="view/{{item['ID']}}">查看详情</a></p>
+              </td>
+            </tr>
+        </table>
+      <div class="pagebar">
+        <div class="page">
+          <app-pagination conf="Pagination"></app-pagination>
+        </div>
+      </div>
+        <div class="Prompt" *ngIf="Total == 0">
+            <h3>您暂时没有相关订单！</h3>
+        </div>
+    </div>
+</div>

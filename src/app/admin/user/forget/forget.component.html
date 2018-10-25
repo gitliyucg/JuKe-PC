@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div class="titlei"><i></i>修改二级密码</div>
+
+  <div id="payment">
+      <form class="form-cont form-horizontal" [formGroup]="formMobel">
+          <div class="form-group" [class.has-error]="formMobel.get('phone').touched && formMobel.get('phone').invalid">
+              <label class="control-label col-sm-2">手机号码</label>
+              <div class="col-sm-4">
+                  <input type="text" class="form-control" value="{{phone}}" formControlName="phone" autocomplete="off">
+              </div>
+              <label class="control-label" style="color: #a94442" *ngIf="formMobel.get('phone').touched && formMobel.get('phone').invalid">请输入正确的手机号格式</label>
+          </div>
+          <div class="form-group">
+              <p class="col-sm-2"></p>
+              <div class="col-sm-2">
+                  <input type="text" class="form-control col-sm-2" style="text-align: center;border-top: 0;border-left: 0;border-right: 0;box-shadow: 0 0 0 0" value="{{verification}}" formControlName="verification" placeholder="请输入验证码">
+              </div>
+              <label class="control-label col-sm-2" (click)="Obtain()">{{ObtainInformation}}</label>
+              <label class="control-label col-sm-1" style="color: #ff4a02">{{time}}S</label>
+          </div>
+          <button class="btn" (click)="Savemodify()" [disabled]=" show || formMobel.get('phone').value == '' || formMobel.get('verification').value == '' || formMobel.get('phone').invalid ">下一步</button>
+      </form>
+  </div>
+
+</div>

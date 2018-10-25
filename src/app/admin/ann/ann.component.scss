@@ -1,0 +1,11 @@
+.content{ padding: 20px;}
+.annrow{ clear: both;
+  overflow: hidden; margin-bottom: 30px;}
+.annrow .time{ float: left; border: #CCCCCC solid 1px; width: 100px; height: 100px; text-align: center;}
+.annrow .time strong{ font-size: 0.4rem; display: block; margin: 20px 0 15px 0;}
+.annrow .cont{ float: right; width: 858px;}
+.annrow .cont div{ line-height:20px;display: -webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;}
+.annrow .cont p{ font-size: 0.16rem; margin-bottom: 10px; font-weight: bold; margin-top: 5px;}

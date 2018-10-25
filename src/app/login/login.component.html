@@ -1,0 +1,34 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <div id="Login">
+    <p><img src="/assets/images/Login.png" alt="剧客网"></p>
+
+    <form class="login" [formGroup]="formModel">
+      <h1>会员登录</h1>
+      <div class="form-group has-feedback" [class.has-error]="formModel.get('UserID').touched && formModel.get('UserID').invalid">
+        <input type="text" class="form-control" formControlName="UserID" autocomplete="no" placeholder="请输入您的账户名">
+        <span class="glyphicon form-control-feedback icon iconfont">&#xe641;</span>
+      </div>
+      <div class="form-group has-feedback" [class.has-error]="formModel.get('pass').touched && formModel.get('pass').invalid">
+        <input type="password" class="form-control" formControlName="pass" placeholder="请输入您的密码">
+        <span class="glyphicon form-control-feedback icon iconfont">&#xe6f9;</span>
+      </div>
+
+      <div class="yzm">
+        <div class="left" [class.has-error]="formModel.get('yzm').touched && formModel.get('yzm').invalid">
+          <input type="text" id="yzm" formControlName="yzm" placeholder="请输入验证码">
+        </div>
+        <div class="right"><div id="v_container"></div></div>
+      </div>
+
+      <div class="local">
+        <div class="left"><input type="checkbox" formControlName="check"> 下次自动登录</div>
+        <div class="right"><a routerLink="/forgotpass">忘记密码？</a></div>
+      </div>
+
+      <div><input id="Loginbtn" type="submit" (click)="onSubmit()" class="btn" value="登 录" [disabled]="formModel.invalid"></div>
+    </form>
+
+  </div>
+</div>
+

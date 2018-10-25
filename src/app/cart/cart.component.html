@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div id="AdminWrap">
+<h3 class="titlei"><i></i>购物车</h3>
+  <div class="title-banner mt15">订单详情</div>
+
+  <div class="cart-list">
+    <div class="thead row">
+      <div class="col-xs-7 text-left">商品名称</div>
+      <div class="col-xs-1">单价</div>
+      <div class="col-xs-2">数量</div>
+      <div class="col-xs-1">小计</div>
+      <div class="col-xs-1">操作</div>
+    </div>
+
+    <div class="tbody row" *ngFor="let x of model;let i= index;">
+      <div class="col-xs-7 text-left">
+        <div class="info">
+          <input type="checkbox" value="{{i}}" [checked]="x.chestate" (change)="checlick($event,i)">
+          <p class="info-img"><img src="{{x['Images']}}" height="82" alt=""></p>
+          <div>
+            <p>{{x['Title']}}</p>
+            <span>{{x['ParamName']}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-1">{{x['Price']}}</div>
+      <div class="col-xs-2">
+        <button class="jian" [disabled]="x['Num'] < 2" (click)="jian(i)">━</button>
+        {{x['Num']}}
+        <button class="jia" (click)="jia(i)" [disabled]="x['Num'] >= x['Size']">+</button></div>
+      <div class="col-xs-1">{{x['Price'] * x['Num']}}</div>
+      <div class="col-xs-1"><i class="icon iconfont btn-icon-del" (click)="delete(x['ID'],i)">&#xe627;</i></div>
+    </div>
+
+    <div class="tfoot row">
+      <div class="col-xs-7 text-left">
+        <div><input type="checkbox" id="checks" (click)="cheall($event.target.checked)">全选</div>
+        <div><button class="btn btn-link" (click)="DelAll()">删除选中的商品</button></div>
+      </div>
+      <div class="col-xs-2">已选择<strong class="num">{{menuArr.length}}</strong>件商品</div>
+      <div class="col-xs-2">总价：<strong class="price">￥{{zongjia}}</strong></div>
+      <div class="col-xs-1"><button class="btn btn-buy" (click)="buy()">结算</button></div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+
+</div>

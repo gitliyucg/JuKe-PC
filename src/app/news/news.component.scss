@@ -1,0 +1,97 @@
+.jum-wrop{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.jumbotron{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    text-align: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    not supported by any browser */
+}
+.jumbotron h2{
+    font-weight: 700;
+    margin-top: 15%;
+    font-size: 0.36rem;
+    color: rgba(255,255,255,0.7);
+    font-family: "方正正大黑简体";
+}
+.jumbotron p{
+    text-align: center;
+    font-size: 0.18rem;
+    color: rgba(255,255,255,0.6);
+}
+.video-jum{
+    width: 100vw;
+}
+.news-content{
+    width: 12rem;
+    margin: 0.4rem auto;
+}
+.news-content-one{
+    position: relative;
+    width: 12rem;
+    height: 3rem;
+    border: 1px solid rgb(201,199,199);
+    margin-top: 0.3rem;
+}
+.news-content-font {
+    height: 3rem;
+    display: inline-block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.news-content-tit {
+    margin-left: 0.4rem;
+    width: 7.3rem;
+}
+.news-content-xiangqing{
+    font-size: 0.16rem;
+    margin-top: 0.25rem;
+    color: #666666;
+    margin-left: 0.4rem;
+    width: 7.3rem;
+    line-height:30px;display: -webkit-box;
+    -webkit-line-clamp:4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.news-content-fonts:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.date{
+    position: absolute;
+    right: 0.1rem;
+    bottom: 0.2rem;
+    color: #999999;
+    font-size: 0.14rem;
+}
+.load-btn{
+    position: relative;
+    top: 0.28rem;
+    left:50%;
+    margin-left: -3rem;
+    width: 6rem;
+    height: 0.5rem;
+    font-size: 0.14rem;
+    background: white;
+    border: 1px solid #ff4a02;
+    color: #ff4a02;
+    text-align: center;
+    line-height: 0.5rem;
+    background: #f5f4f4;
+}
+.getInto{
+    cursor: pointer;
+}

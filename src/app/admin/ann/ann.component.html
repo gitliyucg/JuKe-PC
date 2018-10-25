@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>公告</div>
+
+    <div class="content">
+      <div class="annrow" *ngFor="let x of model;">
+        <div class="time">
+          <strong>{{GetDay(x.Times)}}</strong>
+          <p>{{GetTimes(x.Times)}}</p>
+        </div>
+        <div class="cont">
+          <p><a routerLink="view/{{x.ID}}">{{x.Title}}</a></p>
+          <div [innerHTML]="x.About.substring(0,200)"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+
+  <div id="AdminMain">
+    <div class="titlei"><i></i>收益明细详情</div>
+
+
+    <table class="table tongyong table-striped">
+      <thead>
+      <tr>
+        <td>记录时间</td>
+        <td>交易对方</td>
+        <td>收益原因</td>
+        <td>积分类型</td>
+        <td>收益</td>
+        <td>积分余额</td>
+      </tr>
+      </thead>
+      <tr *ngFor="let x of model;">
+        <td>{{GetTimes(x.RecordDate)}}</td>
+        <td>{{x.TradUserId}}</td>
+        <td>{{x.Reason}}</td>
+        <td>{{x.MoneyType}}</td>
+        <td>{{x.IncomeSum}}</td>
+        <td>{{x.Balance}}</td>
+      </tr>
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+  </div>
+
+</div>

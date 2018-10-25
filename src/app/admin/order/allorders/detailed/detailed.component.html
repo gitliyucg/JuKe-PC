@@ -1,0 +1,92 @@
+<app-header></app-header>
+<div id="AdminWrap">
+  <app-menu></app-menu>
+  <div id="AdminMain">
+  <div class="titlei"><i></i>商城购物>>
+  <span style="cursor:pointer" [routerLink]="['/admin/order/whole']">我的订单</span>>>
+  <span>订单：{{orderInFo['ID']}}</span>
+</div>
+  <div class="OrderWarp">
+    <div class="OrderNumber">
+      <h3>{{State}}</h3>
+      <p>订单编号：{{ID}}</p>
+      <div class="FunctionBtn" *ngIf="orderInFo['State'] != 0 && orderInFo['State'] != 1 && orderInFo['State'] != 6 && orderInFo['State'] != 4 && orderInFo['State'] != 7">
+        <span *ngIf="orderInFo['State'] == 3" style="color: #ff4a02" (click)="ConfirmOrder()">确认收货</span>
+        <span *ngIf="orderInFo['State'] == 4">删除订单</span>
+        <span *ngIf="orderInFo['State'] == 2" (click)="cancelOrders()">取消订单</span>
+      </div>
+    </div>
+    <div class="information">
+      <div class="Place">
+        <strong>下单信息</strong>
+        <p>下单时间：{{GetTimes(orderInFo['PayTimes'])}}</p>
+        <p>支付积分：{{orderInFo['Total']}}</p>
+        <p>积分类型：天天收益使用{{orderInFo['TotalBonus']}}积分，动态奖励使用{{orderInFo['TotalDongTai']}}积分</p>
+        <p>您的留言：{{orderInFo['Marks']}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="Addressee">
+    <strong>收件人信息</strong>
+    <p>
+      <span>姓名：{{Name}}</span>
+      <span class="Addressee-span">电话：{{Phone}}</span>
+      <span class="Addressee-span">详细地址：{{Address}}</span>
+    </p>
+  </div>
+  <div class="logistics">
+    <!--<i (click)="tubiao = !tubiao" class="i" [class.i]="tubiao" [class.tubiao]="!tubiao"></i>-->
+    <div class="logistics-strong"><strong>物流信息</strong><span>发货时间：{{ orderInFo['KDTimes'] == null ? '——' : GetTimes(orderInFo['KDTimes'])}}</span></div>
+    <div class="wrap">
+      <p *ngIf="orderInFo['State'] == 2" style="color: #999999">暂无</p>
+      <div *ngIf="orderInFo['State'] == 3 || orderInFo['State'] == 4 || orderInFo['State'] ==6">
+        <p>物流公司：{{orderInFo['Title']}}</p>
+        <p>物流单号：{{orderInFo['Numbers']}}</p>
+      </div>
+      <div class="logistics-mess" *ngIf="orderInFo['State'] != 2">
+        <div class="left">备　　注：</div>
+        <div class="Remarks">
+          <span>{{orderInFo['Mess']}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 0.2rem">
+    <div style="width: 100%; height: 0.6rem; line-height: 0.6rem; background: #d8e2f8"><strong style="margin-left: 0.41rem">商品信息</strong></div>
+    <table class="table-deliverTable">
+      <thead>
+      <tr style="background: #f5f5f5; height: 0.5rem; line-height: 0.5rem">
+        <th colspan="1"><p style="margin-left: 0.41rem">商品名称</p></th>
+        <th colspan="1" style="text-align: center">单价</th>
+        <th colspan="1" style="text-align: center">数量</th>
+        <th colspan="1" style="text-align: center">小计</th>
+        <th colspan="1" style="text-align: center">操作</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let item of List">
+      <tr style="heigth: 1.2rem; line-height: 0.4rem;border-bottom: 1px solid #e4e4e4">
+        <td rowspan="2">
+          <img src="{{item['Images']}}" alt="" style="width:100px; height: 100px;margin-left: 0.41rem; margin-top: 8px; margin-bottom: 8px">
+          <div style="vertical-align: middle; display: inline-block">
+            <span>{{item['Title']}}</span><br>
+            <span style="font-size: 0.14rem; color: #666666;">{{item['Params']}}</span>
+          </div>
+        </td>
+        <td rowspan="2" style="text-align: center">{{item['Price']}}</td>
+        <td rowspan="2" style="text-align: center">{{item['Num']}}</td>
+        <td rowspan="2" style="text-align: center">{{item['Price']*item['Num']}}</td>
+        <td class="detailed-operation" rowspan="2" style="text-align: center">
+          <b class="text-zhuce">{{GetState(item['State'])}}</b>
+          <!--<span *ngIf="(orderInFo['State'] == 3 || orderInFo['State'] == 4) && item['State'] < 5" [routerLink]="['/admin/order/retreat',item['ID']]">申请售后</span>-->
+          <!--<span *ngIf="orderInFo['State'] == 2" (click)="cancelOrders()">取消订单</span>-->
+          <!--<span [routerLink]="['/admin/order/retreat',orderInFo['ID']]">退款</span>-->
+        </td>
+      </tr>
+      </tbody>
+      <tr style="height: 1.1rem; line-height: 1.1rem">
+        <td class="PaymentExpenses" colspan="5" ><p>支付积分:<i class="iconfont icon-jifen">{{orderInFo['Total']}}</i></p></td>
+      </tr>
+    </table>
+  </div>
+  </div>
+</div>
